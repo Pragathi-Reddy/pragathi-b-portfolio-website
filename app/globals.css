@@ -44,7 +44,7 @@ button { font: inherit; }
 /* About profile: a compact schematic keeps the section personal without adding another oversized visual. */
 .about-section { padding-bottom: 82px; }
 .about-intro { grid-template-columns: 42% 58%; gap: 6%; }
-.about-identity h2 { margin: 18px 0 34px; font-size: clamp(2.9rem, 4.4vw, 4.25rem); line-height: .88; letter-spacing: -.08em; }.about-heading-accent { color: var(--red); }
+.about-identity h2 { margin: 18px 0 34px; font-size: clamp(2.9rem, 4.4vw, 4.25rem); line-height: .88; letter-spacing: -.08em; }.about-heading-accent { color: var(--ink); }
 .about-content { padding-top: 2px; }
 .about-content .large-copy { max-width: 680px; font-size: clamp(1.35rem, 2vw, 1.75rem); }
 .engineering-profile { position: relative; min-height: 260px; margin: 0 0 28px; padding: 18px 20px; border: 1px solid var(--line); overflow: hidden; background: rgba(255,255,255,.16); }
@@ -100,7 +100,7 @@ button { font: inherit; }
 .software-stack { padding-top: 44px; }
 .software-stack .skill-tags { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .tools-stack { padding-top: 60px; }
-.tools-stack .skill-tags span:nth-child(odd) { margin-left: 14px; }
+.tools-stack .skill-tags span:nth-child(odd) { margin-left: 0; }
 .stack-node { position: absolute; top: 45px; width: 7px; height: 7px; border-radius: 50%; background: var(--red); z-index: 2; }
 .node-one { left: 33.333%; transform: translateX(-4px); }.node-two { left: 66.666%; transform: translateX(-4px); }
 @media (max-width: 850px) { .stack-heading { grid-template-columns: 1fr auto; gap: 18px; margin-bottom: 30px; }.stack-heading h2 { justify-self: end; max-width: 185px; font-size: clamp(1.65rem, 7.5vw, 2.7rem); }.stack-map { grid-template-columns: 1fr; }.stack-group { min-height: 0; padding: 28px 20px 34px; border-right: 0; border-bottom: 1px solid var(--line); }.stack-group:last-of-type { border-bottom: 0; }.stack-group::after { top: auto; right: auto; bottom: -4px; left: 22px; }.stack-group:last-of-type::after { display: none; }.software-stack, .tools-stack { padding-top: 28px; }.stack-node { display: none; }.software-stack .skill-tags { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
