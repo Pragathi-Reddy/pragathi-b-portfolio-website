@@ -1,103 +1,75 @@
-import { ArrowDown, ArrowUpRight, ExternalLink } from 'lucide-react'
+'use client'
 
-const featuredProjects = [
-  {
-    number: '01',
-    title: 'Zenith Satellite System',
-    subtitle: 'Hazard Zone Detection and Monitoring',
-    technologies: 'ESP32-CAM · Environmental Sensors · Arduino IDE · Dipole Transmitter',
-    description:
-      'Developed a system to identify hazards and monitor environmental conditions in remote areas, including fires, chemical spills, temperature, humidity, and gas levels.',
-  },
-  {
-    number: '02',
-    title: 'Online Food Delivery Web Application',
-    subtitle: 'College Project',
-    technologies: 'Java · JDBC · Servlets · JSP · MySQL · HTML · CSS',
-    description:
-      'Developed a full-stack web application using MVC architecture and DAO pattern with login, menu, cart, checkout, sessions, and transaction handling.',
-  },
-  {
-    number: '03',
-    title: 'Wireless Display Notice Board',
-    subtitle: 'College Project',
-    technologies: 'Arduino · Bluetooth',
-    description:
-      'Designed a system for remote message display using Bluetooth communication, embedded systems, circuit design, and hardware interfacing.',
-  },
+import { useState } from 'react'
+import { ArrowDown, ArrowUpRight, Menu, X } from 'lucide-react'
+
+const projects = [
+  { number: '01', title: 'Zenith Satellite System', subtitle: 'Satellite-based hazard detection & environmental monitoring', tech: 'ESP32-CAM · Environmental Sensors · Arduino IDE · Dipole Transmitter', description: 'Developed a system to identify hazards and monitor environmental conditions in remote areas, including fires, chemical spills, temperature, humidity, and gas levels.', kind: 'signal' },
+  { number: '02', title: 'Online Food Delivery Web Application', subtitle: 'Full-stack web application', tech: 'Java · JDBC · Servlets · JSP · MySQL · HTML · CSS', description: 'Developed a full-stack web application using MVC architecture and DAO pattern with login, menu, cart, checkout, sessions, and transaction handling.', kind: 'database' },
+  { number: '03', title: 'Wireless Display Notice Board', subtitle: 'Bluetooth-based embedded system', tech: 'Arduino · Bluetooth', description: 'Designed a system for remote message display using Bluetooth communication, embedded systems, circuit design, and hardware interfacing.', kind: 'bluetooth' },
 ]
 
-const personalBuilds = [
-  { title: 'TrainWake', subtitle: 'Smart Train Journey Alarm', points: ['Set journey and destination', 'Track journey using location services', 'Trigger alerts near destination', 'Customize alarm timings'] },
-  { title: 'Wishly', subtitle: 'Wishlist & Memory Organizer', points: ['Create and organize personal wishes', 'Save places, food and experiences', 'Mark completed wishes', 'Add photos and memories'] },
-  { title: 'Smart Task Scheduler', subtitle: 'Full-Stack Task Management Application', points: ['Create tasks with deadlines and priorities', 'Manage recurring tasks and schedules', 'Track tasks through a calendar', 'Send reminders and notifications'] },
+const builds = [
+  { number: '01', title: 'TrainWake', subtitle: 'Smart Train Journey Alarm', points: ['Set journey and destination', 'Track journey using location services', 'Trigger alerts near destination', 'Customize alarm timings'], visual: 'route' },
+  { number: '02', title: 'Wishly', subtitle: 'Wishlist & Memory Organizer', points: ['Create and organize personal wishes', 'Save places, food and experiences', 'Mark completed wishes', 'Add photos and memories'], visual: 'memory' },
+  { number: '03', title: 'Smart Task Scheduler', subtitle: 'Full-Stack Task Management Application', points: ['Create tasks with deadlines and priorities', 'Manage recurring tasks and schedules', 'Track tasks through a calendar', 'Send reminders and notifications'], visual: 'tasks' },
 ]
 
 const experiences = [
-  { label: '01 · 1 MONTH', company: 'Syscon Instruments Pvt Ltd', role: 'Intern', description: 'Worked on strain-gauge-based sensor systems for force measurement, including signal conditioning, ADC conversion, sensor interfacing, calibration, testing, data acquisition, PCB, wiring, soldering, instrumentation, quality testing, and documentation.' },
-  { label: '02 · 1 MONTH', company: 'Teknic Euchner', role: 'Trainee', description: 'Performed calibration, pre-testing, and testing of proximity sensors. Tested specified sensing distances such as 1 mm and 1.75 mm and verified sensor performance and sensing accuracy.' },
-  { label: '03 · INTERNSHIP', company: 'Extion Infotech', role: 'Intern, Remote Certification Program', description: 'Completed project-based training in full-stack development fundamentals and developed a Smart Task Scheduler with task creation, recurring schedules, reminders, calendar view, and completion tracking.' },
+  { number: '01', duration: '1 MONTH', company: 'Syscon Instruments Pvt Ltd', role: 'Intern', description: 'Worked on strain-gauge-based sensor systems for force measurement, including signal conditioning, ADC conversion, sensor interfacing, calibration, testing, data acquisition, PCB, wiring, soldering, instrumentation, quality testing, and documentation.', tags: ['STRAIN GAUGE', 'SIGNAL CONDITIONING', 'ADC', 'SENSORS', 'PCB', 'CALIBRATION'] },
+  { number: '02', duration: '1 MONTH', company: 'Teknic Euchner', role: 'Trainee', description: 'Performed calibration, pre-testing, and testing of proximity sensors. Tested specified sensing distances such as 1 mm and 1.75 mm and verified sensor performance and sensing accuracy.', tags: ['PROXIMITY SENSORS', 'CALIBRATION', 'PRE-TESTING', 'SENSOR TESTING'] },
+  { number: '03', duration: 'INTERNSHIP', company: 'Extion Infotech', role: 'Intern, Remote Certification Program', description: 'Completed project-based training in full-stack development fundamentals and developed a Smart Task Scheduler with task creation, recurring schedules, reminders, calendar view, and completion tracking.', tags: ['JAVA', 'FULL STACK', 'DATABASE', 'WEB DEVELOPMENT'] },
 ]
 
-const skillGroups = [
-  { title: 'Software', skills: 'Java, Core Java, OOP, JDBC, Servlets, J2EE Basics, DAO, MVC, MySQL, DBMS, SQL, HTML, CSS, JavaScript, React' },
-  { title: 'Electronics & VLSI', skills: 'CMOS Basics, NMOS, PMOS, Analog Circuits, Current Mirror, Differential Pair, Op-Amp Basics, Physical Design Flow, Setup/Hold/Slack, Signal Conditioning, Sensors, PCB Basics, Soldering, Embedded Systems' },
-  { title: 'Tools', skills: 'MATLAB, Multisim, Arduino IDE, VS Code, Eclipse, MySQL Workbench, Apache Tomcat' },
-]
-
-function SectionLabel({ children }: { children: React.ReactNode }) {
-  return <p className="section-label">{children}</p>
+const skills = {
+  SOFTWARE: ['Java', 'Core Java', 'OOP', 'JDBC', 'Servlets', 'J2EE Basics', 'DAO', 'MVC', 'MySQL', 'DBMS', 'SQL', 'HTML', 'CSS', 'JavaScript', 'React'],
+  'ELECTRONICS & VLSI': ['CMOS Basics', 'NMOS', 'PMOS', 'Analog Circuits', 'Current Mirror', 'Differential Pair', 'Op-Amp Basics', 'Physical Design Flow', 'Setup/Hold/Slack', 'Signal Conditioning', 'Sensors', 'PCB Basics', 'Soldering', 'Embedded Systems'],
+  TOOLS: ['MATLAB', 'Multisim', 'Arduino IDE', 'VS Code', 'Eclipse', 'MySQL Workbench', 'Apache Tomcat'],
 }
 
-function ArrowLink({ children, href = '#' }: { children: React.ReactNode; href?: string }) {
-  return <a className="arrow-link" href={href}>{children}<ArrowUpRight aria-hidden="true" /></a>
+function Label({ children }: { children: React.ReactNode }) { return <p className="section-label">{children}</p> }
+function External({ children, href = '#' }: { children: React.ReactNode; href?: string }) { return <a className="external" href={href}>{children}<ArrowUpRight aria-hidden="true" /></a> }
+function SectionHead({ label, children }: { label: string; children: React.ReactNode }) { return <div className="section-head"><Label>{label}</Label><h2>{children}</h2></div> }
+
+function SystemVisual() {
+  return <div className="system-visual" aria-label="Engineering system status visualization">
+    <div className="visual-grid" /><div className="scan-line" /><div className="orbit orbit-one" /><div className="orbit orbit-two" />
+    <span className="node node-one" /><span className="node node-two" /><span className="node node-three" />
+    <div className="system-panel"><div className="panel-top"><span>SYSTEM STATUS</span><span>PB / 001</span></div><div className="status-list"><div><span>VLSI</span><b>ACTIVE <i /></b></div><div><span>EMBEDDED</span><b>ACTIVE <i /></b></div><div><span>SOFTWARE</span><b>ACTIVE <i /></b></div><div><span>RESEARCH</span><b>ACTIVE <i /></b></div></div><div className="metrics"><strong>08<small>+</small></strong><strong>03<small>EXP</small></strong><strong>01<small>IEEE</small></strong></div></div>
+    <span className="coordinates">12° 58&apos; 16&quot; N<br />77° 35&apos; 42&quot; E</span><span className="scroll-note">SCROLL TO EXPLORE ↓</span>
+  </div>
+}
+
+function ProjectVisual({ kind }: { kind: string }) {
+  return <div className={`project-visual ${kind}`} aria-hidden="true"><div className="visual-frame"><span className="visual-caption">SYSTEM / {kind.toUpperCase()}</span>{kind === 'signal' && <><div className="radar" /><div className="signal-path"><i /><i /><i /><i /></div><span className="hazard">HAZARD<br />DETECTED</span></>}{kind === 'database' && <><div className="browser-line" /><div className="browser-window"><span>MENU / CART / CHECKOUT</span><b>ORDER_DATABASE</b><em>01 02 03 04</em></div><div className="db-node">MYSQL</div></>}{kind === 'bluetooth' && <><div className="bt-ring" /><div className="bt-line" /><div className="bt-device">ARDUINO</div><div className="bt-screen">DISPLAY<br />NOTICE</div></>}</div></div>
 }
 
 export default function Page() {
-  return (
-    <main>
-      <header className="site-header wrapper">
-        <a href="#top" className="wordmark">PB.</a>
-        <nav aria-label="Main navigation">
-          <a href="#about">About</a><a href="#projects">Projects</a><a href="#contact">Contact</a>
-        </nav>
-        <ArrowLink href="https://www.linkedin.com">LinkedIn</ArrowLink>
-      </header>
+  const [menuOpen, setMenuOpen] = useState(false)
+  return <main>
+    <header className="site-header wrapper"><a href="#top" className="wordmark">PB.</a><nav className={menuOpen ? 'nav-open' : ''} aria-label="Main navigation"><a href="#about" onClick={() => setMenuOpen(false)}>ABOUT</a><a href="#work" onClick={() => setMenuOpen(false)}>WORK</a><a href="#experience" onClick={() => setMenuOpen(false)}>EXPERIENCE</a><a href="#research" onClick={() => setMenuOpen(false)}>RESEARCH</a><a href="#contact" onClick={() => setMenuOpen(false)}>CONTACT</a></nav><External href="https://www.linkedin.com">LINKEDIN</External><button className="menu-button" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? 'Close menu' : 'Open menu'}>{menuOpen ? <X /> : <Menu />}</button></header>
 
-      <section id="top" className="hero wrapper">
-        <div className="hero-copy">
-          <SectionLabel>Personal Portfolio</SectionLabel>
-          <h1>Pragathi B</h1>
-          <p className="hero-title">VLSI &amp; Software Development.</p>
-          <p className="hero-description">Electronics &amp; Communication Engineering graduate with a foundation in VLSI, physical design, Java, and full-stack development.</p>
-          <div className="hero-actions"><a className="button button-dark" href="#projects">View projects <ArrowDown aria-hidden="true" /></a><a className="button button-outline" href="#contact">Connect on LinkedIn <ArrowUpRight aria-hidden="true" /></a></div>
-          <ArrowLink href="https://github.com">GitHub</ArrowLink>
-        </div>
-        <div className="direction-visual" aria-label="Two professional directions">
-          <div className="direction-card direction-card-top"><span>01</span><strong>VLSI &amp;<br />Physical Design</strong></div>
-          <div className="direction-card direction-card-bottom"><span>02</span><strong>Java Full-Stack<br />Development</strong></div>
-        </div>
-      </section>
+    <section id="top" className="hero wrapper"><div className="hero-copy"><Label>PERSONAL PORTFOLIO<br />ECE · VLSI · SOFTWARE</Label><h1>PRAGATHI<br /><span>B.</span></h1><p className="hero-kicker">I BUILD ACROSS<br /><strong>HARDWARE <i>×</i> SOFTWARE</strong></p><p className="hero-description">Electronics and Communication Engineering graduate building across VLSI, physical design, embedded systems, Java and full-stack development.</p><div className="hero-actions"><a className="button button-dark" href="#work">VIEW MY WORK <ArrowDown /></a><a className="button button-outline" href="https://www.linkedin.com">CONNECT ON LINKEDIN <ArrowUpRight /></a></div><External href="https://github.com">GITHUB</External></div><SystemVisual /></section>
 
-      <section id="about" className="section wrapper split-section"><SectionLabel>01 / About</SectionLabel><div className="split-content"><h2>An ECE graduate with two technical directions.</h2><div><h3>Building across hardware and software.</h3><p>I&apos;m an Electronics and Communication Engineering graduate with a foundation in VLSI, physical design, analog and digital electronics, Java, and full-stack development. I&apos;ve worked with sensor systems, signal conditioning, PCB implementation, and software applications, combining my electronics background with software development skills.</p></div></div></section>
+    <section id="about" className="section wrapper about-section"><SectionHead label="01 / ABOUT">AN ECE GRADUATE<br />BUILDING ACROSS<br />HARDWARE AND SOFTWARE.</SectionHead><div className="about-grid"><p className="statement">A technical foundation with room to connect the dots.</p><div><p className="large-copy">I&apos;m an Electronics and Communication Engineering graduate with hands-on exposure to VLSI, physical design, analog and digital electronics, sensors, signal conditioning, PCB implementation, Java, databases and full-stack development.</p><p className="body-copy">I enjoy turning technical concepts into practical systems — from sensor-based hardware to software applications.</p><div className="indicators"><div><span>HARDWARE</span><b>VLSI · SENSORS · PCB · EMBEDDED</b></div><div><span>SOFTWARE</span><b>JAVA · SQL · DBMS · FULL STACK</b></div><div><span>RESEARCH</span><b>IEEE · ESP32-CAM · LoRa</b></div></div></div></div></section>
 
-      <section className="section wrapper"><div className="section-header"><SectionLabel>02 / What I Work With</SectionLabel><h2 className="section-heading">A cross-disciplinary foundation.</h2></div><div className="two-grid"><article className="outline-card"><span className="card-index">01</span><h3>Software</h3><p>Java · Full Stack · DBMS · SQL · Web Development</p></article><article className="outline-card"><span className="card-index">02</span><h3>Electronics &amp; VLSI</h3><p>Semiconductors (CMOS Basics) · Analog &amp; Digital Electronics · VLSI Physical Design · PCB Basics · Sensor Interfacing</p></article></div></section>
+    <section id="build" className="section wrapper build-section"><SectionHead label="02 / WHAT I BUILD">HARDWARE <em>×</em> SOFTWARE</SectionHead><div className="build-grid"><article className="build-side hardware"><span className="side-number">01</span><h3>HARDWARE</h3><div className="build-list"><span>VLSI</span><span>CMOS</span><span>Analog Electronics</span><span>Digital Electronics</span><span>Sensors</span><span>PCB</span><span>Embedded Systems</span></div><div className="trace-lines" /></article><article className="build-side software"><span className="side-number">02</span><h3>SOFTWARE</h3><div className="build-list"><span>Java</span><span>Full Stack</span><span>SQL</span><span>DBMS</span><span>React</span><span>Web Development</span></div><div className="code-lines">01 const build = practical;<br />02 connect(hardware, software);<br />03 ship(with_curiosity);</div></article></div></section>
 
-      <section id="projects" className="section wrapper"><div className="section-header"><SectionLabel>03 / Featured Projects</SectionLabel><h2 className="section-heading">Technology made tangible.</h2></div><div className="project-grid">{featuredProjects.map((project) => <article className="project-card" key={project.number}><span className="card-index">{project.number}</span><h3>{project.title}</h3><p className="project-subtitle">{project.subtitle}</p><p className="tech-line">{project.technologies}</p><p>{project.description}</p></article>)}</div></section>
+    <section id="work" className="section wrapper work-section"><SectionHead label="03 / SELECTED WORK">TECHNOLOGY<br />MADE TANGIBLE.</SectionHead><div className="project-showcase">{projects.map((project) => <article className="showcase-project" key={project.number}><div className="project-copy"><span className="project-number">{project.number} / COLLEGE PROJECT</span><h3>{project.title}</h3><p className="project-subtitle">{project.subtitle}</p><p className="tech-line">{project.tech}</p><p className="body-copy">{project.description}</p><External>VIEW PROJECT</External></div><ProjectVisual kind={project.kind} /></article>)}</div></section>
 
-      <section className="section wrapper"><div className="section-header"><SectionLabel>04 / Apps &amp; Personal Builds</SectionLabel><h2 className="section-heading">Apps &amp; Personal Builds</h2></div><div className="project-grid personal-grid">{personalBuilds.map((project) => <article className="project-card compact-card" key={project.title}><h3>{project.title}</h3><p className="project-subtitle">{project.subtitle}</p><ul>{project.points.map((point) => <li key={point}>{point}</li>)}</ul></article>)}</div></section>
+    <section className="section wrapper personal-section"><SectionHead label="04 / PERSONAL BUILDS">THINGS I&apos;M<br />BUILDING.</SectionHead><div className="build-showcase">{builds.map((build) => <article className="personal-panel" key={build.title}><div><span className="project-number">{build.number}</span><h3>{build.title}</h3><p className="project-subtitle">{build.subtitle}</p><ul>{build.points.map((point) => <li key={point}>{point}</li>)}</ul></div><div className={`mini-visual ${build.visual}`} aria-hidden="true"><span>{build.visual === 'route' ? 'TRAIN / ROUTE' : build.visual === 'memory' ? 'WISHLY / MEMORY' : 'TASKS / CALENDAR'}</span><b>{build.visual === 'route' ? '●━━━━━━◉' : build.visual === 'memory' ? '01 / 24  02 / 24' : '09:00  TASK  12:30'}</b></div></article>)}</div></section>
 
-      <section className="section wrapper"><div className="section-header"><SectionLabel>05 / Experience</SectionLabel><h2 className="section-heading">Learning through real systems.</h2></div><div className="experience-list">{experiences.map((experience) => <article className="experience-row" key={experience.label}><span className="experience-label">{experience.label}</span><div><h3>{experience.company}</h3><p className="role">{experience.role}</p></div><p>{experience.description}</p></article>)}</div></section>
+    <section id="experience" className="section wrapper experience-section"><SectionHead label="05 / EXPERIENCE">LEARNING THROUGH<br />REAL SYSTEMS.</SectionHead><div className="timeline">{experiences.map((experience) => <article className="timeline-row" key={experience.number}><div className="timeline-marker"><span>{experience.number}</span></div><div className="timeline-meta"><span>{experience.duration}</span><h3>{experience.company}</h3><p>{experience.role}</p></div><div><p className="body-copy">{experience.description}</p><div className="experience-tags">{experience.tags.map((tag) => <span key={tag}>{tag}</span>)}</div></div></article>)}</div></section>
 
-      <section className="section wrapper"><div className="section-header"><SectionLabel>06 / Skills</SectionLabel><h2 className="section-heading">Tools for the work.</h2></div><div className="skills-grid">{skillGroups.map((group) => <article className="skill-group" key={group.title}><h3>{group.title}</h3><div className="skill-tags">{group.skills.split(', ').map((skill) => <span key={skill}>{skill}</span>)}</div></article>)}</div></section>
+    <section id="stack" className="section wrapper stack-section"><SectionHead label="06 / STACK">TOOLS FOR<br />THE WORK.</SectionHead><div className="stack-map">{Object.entries(skills).map(([group, items], index) => <article className="stack-group" key={group}><span className="stack-index">0{index + 1}</span><h3>{group}</h3><div>{items.map((skill) => <span key={skill}>{skill}</span>)}</div></article>)}</div></section>
 
-      <section className="section wrapper split-section"><SectionLabel>07 / Research &amp; Achievements</SectionLabel><div className="split-content"><h2>Curiosity backed by practice.</h2><div className="research-content"><p className="eyebrow">IEEE Research Paper · ICSSS 2025 — IEEE</p><h3>Satellite-based Image Transmission with Hazard Detection and Real-Time Environmental Monitoring using LoRa and ESP32-CAM</h3><div className="achievement"><strong>250+</strong><p>Programming problems completed across arrays, strings, loops, subarrays, sets, maps, and basic time and space complexity.</p></div></div></div></section>
+    <section id="research" className="section wrapper research-section"><SectionHead label="07 / RESEARCH">FROM CAMERA<br />TO SATELLITE.</SectionHead><div className="research-grid"><div><span className="eyebrow">IEEE RESEARCH PAPER · ICSSS 2025 · IEEE PUBLISHER</span><h3>Satellite-based Image Transmission with Hazard Detection and Real-Time Environmental Monitoring using LoRa and ESP32-CAM</h3><External>VIEW RESEARCH</External></div><div className="research-visual"><div className="earth-grid" /><div className="orbit orbit-one" /><div className="orbit orbit-two" /><span className="satellite">ESP32-CAM</span><span className="research-dot">HAZARD</span></div></div><div className="stats"><div><strong>250<small>+</small></strong><span>PROGRAMMING PROBLEMS</span></div><div><strong>03</strong><span>TECHNICAL EXPERIENCES</span></div><div><strong>01</strong><span>IEEE RESEARCH PAPER</span></div><div><strong>08<small>+</small></strong><span>PROJECTS &amp; BUILDS</span></div></div></section>
 
-      <section className="section wrapper split-section"><SectionLabel>08 / Education</SectionLabel><div className="split-content"><h2>The foundation.</h2><div><h3>Bachelor of Engineering – Electronics and Communication Engineering</h3><p>CMR Institute of Technology</p><p className="education-meta">CGPA: 8.2 · 2025</p></div></div></section>
+    <section className="section wrapper current-section"><SectionHead label="08 / CURRENTLY BUILDING">ALWAYS<br />BUILDING SOMETHING.</SectionHead><div className="current-grid">{[['TRAINWAKE','Smart Train Journey Alarm','BUILDING'],['WISHLY','Wishlist & Memory Organizer','EXPLORING'],['VLSI / PHYSICAL DESIGN','Learning & Practice','LEARNING']].map(([title, subtitle, status]) => <article key={title}><span>STATUS: {status}</span><h3>{title}</h3><p>{subtitle}</p><i><b style={{ width: status === 'BUILDING' ? '72%' : status === 'EXPLORING' ? '48%' : '34%' }} /></i></article>)}</div></section>
 
-      <section id="contact" className="contact-section wrapper"><SectionLabel>09 / Contact</SectionLabel><h2>Let&apos;s build something practical.</h2><div className="contact-links"><ArrowLink href="mailto:pragatireddy900@gmail.com"><span><small>Email</small>pragatireddy900@gmail.com</span></ArrowLink><ArrowLink href="https://www.linkedin.com"><span><small>LinkedIn</small>LinkedIn</span></ArrowLink><ArrowLink href="https://github.com"><span><small>GitHub</small>GitHub</span></ArrowLink></div></section>
+    <section className="section wrapper education-section"><SectionHead label="09 / EDUCATION">THE FOUNDATION.</SectionHead><div className="education-copy"><span>BACHELOR OF ENGINEERING</span><h3>Electronics and Communication Engineering</h3><p>CMR Institute of Technology</p><strong>CGPA: 8.2 <i>·</i> 2025</strong></div></section>
 
-      <footer className="site-footer wrapper"><span>Pragathi B</span><span>Electronics &amp; technology</span></footer>
-    </main>
-  )
+    <section id="contact" className="contact-section wrapper"><Label>10 / CONTACT</Label><h2>HAVE AN IDEA?<br />LET&apos;S BUILD<br /><em>SOMETHING PRACTICAL.</em></h2><p className="large-copy">Open to opportunities, technical collaborations and projects across electronics, VLSI and software development.</p><div className="contact-links"><External href="mailto:pragatireddy900@gmail.com"><span>EMAIL<small>pragatireddy900@gmail.com</small></span></External><External href="https://www.linkedin.com"><span>LINKEDIN<small>LinkedIn</small></span></External><External href="https://github.com"><span>GITHUB<small>GitHub</small></span></External></div></section>
+    <footer className="site-footer wrapper"><span>Pragathi B.</span><span>ECE · VLSI · SOFTWARE</span><span>© 2026</span></footer><p className="footer-note">BUILT WITH CURIOSITY.</p>
+  </main>
 }
