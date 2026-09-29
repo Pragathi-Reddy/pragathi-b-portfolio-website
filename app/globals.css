@@ -44,7 +44,7 @@ button { font: inherit; }
 /* About profile: a compact schematic keeps the section personal without adding another oversized visual. */
 .about-section { padding-bottom: 82px; }
 .about-intro { grid-template-columns: 42% 58%; gap: 6%; }
-.about-identity h2 { margin: 18px 0 34px; font-size: clamp(2.9rem, 4.4vw, 4.25rem); line-height: .88; letter-spacing: -.08em; }
+.about-identity h2 { margin: 18px 0 34px; font-size: clamp(2.9rem, 4.4vw, 4.25rem); line-height: .88; letter-spacing: -.08em; }.about-heading-accent { color: var(--red); }
 .about-content { padding-top: 2px; }
 .about-content .large-copy { max-width: 680px; font-size: clamp(1.35rem, 2vw, 1.75rem); }
 .engineering-profile { position: relative; min-height: 260px; margin: 0 0 28px; padding: 18px 20px; border: 1px solid var(--line); overflow: hidden; background: rgba(255,255,255,.16); }
