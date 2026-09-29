@@ -147,3 +147,19 @@ button { font: inherit; }
   .stack-map { grid-template-columns: 1fr; }
   .stack-group { height: auto; min-height: 300px; }
 }
+
+/* Skills reference: architectural card edges and a stronger editorial header. */
+.stack-section .stack-heading h2 { max-width: 330px; font-size: clamp(2.7rem, 5.4vw, 5.5rem); }
+.stack-section .stack-heading h2 span { display: inline-block; color: var(--red); font-size: .72em; line-height: 0; transform: translateX(.08em); }
+.stack-section .stack-map { gap: 20px; }
+.stack-section .stack-group { isolation: isolate; overflow: visible; border-color: color-mix(in srgb, var(--line) 92%, var(--ink)); background: color-mix(in srgb, var(--paper) 96%, transparent); }
+.stack-section .stack-group::before { content: ''; position: absolute; inset: -1px; z-index: -1; clip-path: polygon(0 0, 88% 0, 100% 12%, 100% 100%, 0 100%); border: 1px solid var(--line); pointer-events: none; }
+.stack-section .stack-group .stack-index { width: 66px; height: 30px; clip-path: polygon(0 0, 78% 0, 100% 100%, 0 100%); justify-content: start; padding-left: 30px; }
+.stack-section .stack-group h3 { margin-top: 38px; font-size: 1.1rem; }
+.stack-section .stack-group .skill-tags { max-width: 100%; row-gap: 9px; column-gap: 8px; }
+.stack-section .stack-group .skill-tags span { background: color-mix(in srgb, var(--paper) 72%, transparent); }
+@media (max-width: 760px) {
+  .stack-section .stack-heading h2 { max-width: 280px; }
+  .stack-section .stack-map { gap: 14px; }
+  .stack-section .stack-group::before { clip-path: polygon(0 0, 90% 0, 100% 8%, 100% 100%, 0 100%); }
+}
