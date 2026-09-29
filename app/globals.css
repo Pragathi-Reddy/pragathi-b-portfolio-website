@@ -75,8 +75,8 @@ button { font: inherit; }
 
 /* Stack section: one connected hardware/software/tools system. */
 .stack-section { padding-top: 42px; }
-.stack-heading { display: grid; grid-template-columns: 1fr 2.25fr; gap: 30px; align-items: start; margin-bottom: 72px; }
-.stack-heading h2 { margin: 0; max-width: 800px; font-size: clamp(3.6rem, 7.4vw, 8rem); line-height: .8; letter-spacing: -.1em; font-weight: 800; }
+.stack-heading { display: grid; grid-template-columns: 1fr auto; gap: 30px; align-items: start; margin-bottom: 38px; }
+.stack-heading h2 { justify-self: end; margin: -8px 0 0; max-width: 280px; text-align: right; font-size: clamp(2rem, 3.4vw, 3.5rem); line-height: .82; letter-spacing: -.1em; font-weight: 800; }
 .stack-heading h2 span { color: var(--red); font-weight: 400; }
 .stack-map { position: relative; }
 .stack-group { position: relative; isolation: isolate; overflow: hidden; min-height: 520px; transition: background-color .3s ease; }
@@ -94,7 +94,7 @@ button { font: inherit; }
 .stack-system-line i::before { content: ''; position: absolute; left: 50%; top: -2px; width: 5px; height: 5px; border-radius: 50%; background: var(--red); animation: stack-node-flow 3.2s ease-in-out infinite; }
 .stack-system-line i:nth-of-type(2)::before { animation-delay: .6s; }.stack-system-line i:nth-of-type(3)::before { animation-delay: 1.2s; }.stack-system-line i:nth-of-type(4)::before { animation-delay: 1.8s; }
 @keyframes stack-node-flow { 0%, 100% { opacity: .35; transform: scale(.75); } 50% { opacity: 1; transform: scale(1.45); } }
-@media (max-width: 850px) { .stack-heading { grid-template-columns: 1fr; gap: 18px; margin-bottom: 48px; }.stack-heading h2 { font-size: clamp(3.8rem, 16vw, 6rem); }.stack-group { min-height: 370px; }.stack-system-line { flex-wrap: wrap; gap: 10px; }.stack-system-line i { min-width: 24px; }.stack-system-line span { font-size: .5rem; } }
+@media (max-width: 850px) { .stack-heading { grid-template-columns: 1fr auto; gap: 18px; margin-bottom: 30px; }.stack-heading h2 { justify-self: end; max-width: 185px; font-size: clamp(1.65rem, 7.5vw, 2.7rem); }.stack-group { min-height: 370px; }.stack-system-line { flex-wrap: wrap; gap: 10px; }.stack-system-line i { min-width: 24px; }.stack-system-line span { font-size: .5rem; } }
 
 /* Final About polish: tighter vertical rhythm and a quiet live-signal feel. */
 .about-section .about-identity { display: flex; flex-direction: column; }
