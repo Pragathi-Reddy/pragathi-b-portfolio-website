@@ -37,7 +37,30 @@ button { font: inherit; }
 .signal-path i:first-child { animation: signal-pulse 2.4s ease-in-out infinite; }.signal-path i:nth-child(2) { animation: signal-pulse 2.4s .45s ease-in-out infinite; }.signal-path i:nth-child(3) { animation: signal-pulse 2.4s .9s ease-in-out infinite; }
 .stack-group > div button { border: 1px solid var(--line); padding: 8px 10px; color: var(--muted); background: transparent; cursor: pointer; font: .7rem Arial, sans-serif; transition: .2s ease; }.stack-group > div button:hover, .stack-group > div button.active-skill { border-color: var(--red); color: var(--red); transform: translateY(-2px); }.skill-detail { min-height: 32px; margin: 24px 0 0; color: var(--red); font: .58rem/1.6 ui-monospace, monospace; letter-spacing: .05em; }
 .project-modal { position: fixed; inset: 0; z-index: 50; overflow: auto; padding: 5vw; background: color-mix(in srgb, var(--paper) 96%, transparent); backdrop-filter: blur(16px); animation: modal-in .25s ease both; }.modal-inner { position: relative; width: min(1080px, 100%); margin: 0 auto; padding: 42px; border: 1px solid var(--ink); background: var(--paper); box-shadow: 14px 14px 0 var(--blush); }.modal-close { position: absolute; top: 24px; right: 24px; border: 0; background: transparent; color: var(--red); cursor: pointer; font: 700 .65rem ui-monospace, monospace; letter-spacing: .1em; }.modal-inner h2 { max-width: 700px; margin: 28px 0 8px; font-size: clamp(2.7rem, 6vw, 6rem); line-height: .88; letter-spacing: -.09em; }.modal-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 44px; margin-top: 36px; }.modal-grid .project-visual { min-height: 310px; }.modal-grid .eyebrow { display: block; margin-top: 18px; }.modal-grid .eyebrow:first-child { margin-top: 0; }
-@keyframes signal-pulse { 0%, 100% { transform: scale(.8); opacity: .35; } 50% { transform: scale(1.8); opacity: 1; } } @keyframes modal-in { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes signal-pulse { 0%, 100% { transform: scale(.8); opacity: .35; } 50% { transform: scale(1.8); opacity: 1; } }
+
+/* About profile: a compact schematic keeps the section personal without adding another oversized visual. */
+.about-section { padding-bottom: 82px; }
+.about-intro { grid-template-columns: 42% 58%; gap: 6%; }
+.about-identity h2 { margin: 18px 0 30px; font-size: clamp(3.25rem, 5vw, 4.8rem); line-height: .9; letter-spacing: -.085em; }
+.about-content { padding-top: 2px; }
+.about-content .large-copy { max-width: 680px; font-size: clamp(1.35rem, 2vw, 1.75rem); }
+.engineering-profile { position: relative; min-height: 260px; margin: 0 0 28px; padding: 18px 20px; border: 1px solid var(--line); overflow: hidden; background: rgba(255,255,255,.16); }
+.profile-title, .profile-line, .profile-software { font: 700 .62rem ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .12em; }
+.profile-title { color: var(--red); }
+.profile-line { position: absolute; left: 20px; right: 20px; display: flex; align-items: center; gap: 12px; color: var(--ink); }
+.profile-line-vlsi { top: 76px; }.profile-line-sensors { top: 126px; }.profile-line-embedded { top: 176px; }
+.profile-line i { position: relative; flex: 1; height: 1px; background: var(--line); }
+.profile-line i::before, .profile-line i::after { content: ''; position: absolute; top: -2px; width: 5px; height: 5px; border-radius: 50%; background: var(--red); }
+.profile-line i::before { left: 26%; }.profile-line i::after { right: 18%; }
+.profile-line b { position: absolute; left: 45%; width: 1px; height: 100px; background: var(--red); opacity: .55; transform: translateY(50%); }
+.profile-line-sensors b { height: 50px; transform: translateY(0); }.profile-line em { color: var(--red); font-style: normal; }
+.profile-line-sensors i { animation: profile-signal 3.2s ease-in-out infinite; }
+.profile-software { position: absolute; left: 20px; right: 20px; bottom: 19px; display: flex; justify-content: space-between; color: var(--ink); }.profile-software small { color: var(--muted); font: inherit; letter-spacing: .07em; }
+.statement { max-width: none; margin: 0 0 12px; font-size: 1rem; line-height: 1.15; }.profile-foot { color: var(--muted); font: .58rem ui-monospace, monospace; letter-spacing: .1em; }
+.indicators { margin-top: 44px; }.indicators div { cursor: default; }.indicators div:hover { padding-left: 10px; }.about-flow { display: flex; align-items: center; gap: 12px; margin-top: 72px; padding-top: 18px; border-top: 1px solid var(--line); color: var(--muted); font: 700 .58rem ui-monospace, monospace; letter-spacing: .1em; }.about-flow i { position: relative; flex: 1; height: 1px; background: var(--line); }.about-flow i::after { content: ''; position: absolute; right: 0; top: -2px; width: 5px; height: 5px; border-radius: 50%; background: var(--red); }
+@keyframes profile-signal { 0%, 100% { opacity: .45; } 50% { opacity: 1; box-shadow: 0 0 0 3px rgba(217,37,37,.1); } }
+@media (max-width: 760px) { .about-intro { grid-template-columns: 1fr; gap: 42px; }.about-identity h2 { font-size: clamp(3rem, 13vw, 4rem); }.engineering-profile { min-height: 230px; }.profile-line-vlsi { top: 70px; }.profile-line-sensors { top: 116px; }.profile-line-embedded { top: 162px; }.profile-software { bottom: 16px; flex-direction: column; gap: 5px; }.profile-software small { font-size: .56rem; }.about-content .large-copy { font-size: 1.35rem; }.about-flow { flex-wrap: wrap; gap: 9px; margin-top: 48px; }.about-flow i { min-width: 24px; }.about-flow span { font-size: .52rem; } } @keyframes modal-in { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
 @media (max-width: 850px) { .modal-inner { padding: 28px 20px; }.modal-grid { grid-template-columns: 1fr; gap: 25px; }.modal-close { top: 16px; right: 16px; }.about-section .section-head h2, .experience-section .section-head h2, .stack-section .section-head h2, .personal-section .section-head h2, .build-section .section-head h2 { font-size: clamp(2.5rem, 12vw, 4.5rem); } }
 @media (prefers-reduced-motion: reduce) { .signal-path i { animation: none; } }
 @keyframes scan { from { transform: translateY(-130px); opacity: .1; } to { transform: translateY(130px); opacity: .7; } }
