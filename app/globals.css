@@ -41,6 +41,30 @@ button { font: inherit; }
 
 .stack-heading-accent, .stack-group h3 { color: var(--red); }
 
+/* Skills reference layout: three equal engineering cards with chamfered corners. */
+.stack-section { padding-bottom: 118px; }
+.stack-heading { display: flex; justify-content: space-between; align-items: flex-start; gap: 32px; margin-bottom: 66px; }
+.stack-heading .section-label { margin-top: 12px; }
+.stack-heading h2 { margin: 0; max-width: 430px; text-align: right; color: var(--ink); font-size: clamp(2.8rem, 5.6vw, 5.25rem); line-height: .86; letter-spacing: -.09em; }
+.stack-heading-accent { color: var(--red); }
+.stack-map { gap: 20px; border: 0; }
+.stack-group { position: relative; min-height: 286px; padding: 67px 26px 28px; border: 1px solid var(--line); border-right: 1px solid var(--line); background: rgba(255,255,255,.12); clip-path: polygon(0 0, 78px 0, 101px 27px, 100% 27px, 100% 100%, 0 100%); }
+.stack-group:last-child { border-right: 1px solid var(--line); }
+.stack-group::before { content: ''; position: absolute; inset: 0; pointer-events: none; border: 1px solid rgba(217,37,37,.15); clip-path: polygon(0 0, 78px 0, 101px 27px, 100% 27px, 100% 100%, 0 100%); }
+.stack-index { position: absolute; top: 0; left: 0; z-index: 1; display: flex; align-items: center; width: 101px; height: 28px; padding-left: 27px; color: #fff; background: var(--red); font-weight: 800; clip-path: polygon(0 0, 78px 0, 101px 28px, 0 28px); }
+.stack-group h3 { margin: 0 0 22px; font-size: 1.15rem; letter-spacing: -.04em; }
+.stack-group > div:not(.stack-graphic) { gap: 8px; }
+.stack-group > div:not(.stack-graphic) span { min-height: 30px; padding: 7px 10px; background: rgba(255,255,255,.22); font-size: .66rem; }
+.stack-node { display: none; }
+
+@media (max-width: 760px) {
+  .stack-heading { flex-direction: column; gap: 24px; margin-bottom: 40px; }
+  .stack-heading h2 { max-width: 300px; text-align: left; align-self: flex-end; font-size: clamp(2.8rem, 13vw, 4.2rem); }
+  .stack-map { grid-template-columns: 1fr; gap: 14px; }
+  .stack-group { min-height: 0; padding: 62px 20px 24px; }
+  .stack-group h3 { font-size: 1.15rem; }
+}
+
 /* About profile: a compact schematic keeps the section personal without adding another oversized visual. */
 .about-section { padding-bottom: 82px; }
 .about-intro { grid-template-columns: 42% 58%; gap: 6%; }
