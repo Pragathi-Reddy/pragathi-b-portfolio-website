@@ -39,6 +39,8 @@ button { font: inherit; }
 .project-modal { position: fixed; inset: 0; z-index: 50; overflow: auto; padding: 5vw; background: color-mix(in srgb, var(--paper) 96%, transparent); backdrop-filter: blur(16px); animation: modal-in .25s ease both; }.modal-inner { position: relative; width: min(1080px, 100%); margin: 0 auto; padding: 42px; border: 1px solid var(--ink); background: var(--paper); box-shadow: 14px 14px 0 var(--blush); }.modal-close { position: absolute; top: 24px; right: 24px; border: 0; background: transparent; color: var(--red); cursor: pointer; font: 700 .65rem ui-monospace, monospace; letter-spacing: .1em; }.modal-inner h2 { max-width: 700px; margin: 28px 0 8px; font-size: clamp(2.7rem, 6vw, 6rem); line-height: .88; letter-spacing: -.09em; }.modal-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 44px; margin-top: 36px; }.modal-grid .project-visual { min-height: 310px; }.modal-grid .eyebrow { display: block; margin-top: 18px; }.modal-grid .eyebrow:first-child { margin-top: 0; }
 @keyframes signal-pulse { 0%, 100% { transform: scale(.8); opacity: .35; } 50% { transform: scale(1.8); opacity: 1; } }
 
+.stack-heading-accent, .stack-group h3 { color: var(--red); }
+
 /* About profile: a compact schematic keeps the section personal without adding another oversized visual. */
 .about-section { padding-bottom: 82px; }
 .about-intro { grid-template-columns: 42% 58%; gap: 6%; }
