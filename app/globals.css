@@ -197,6 +197,13 @@ button { font: inherit; }
 .stack-section .stack-group h3 { margin-top: 38px; font-size: 1.1rem; }
 .stack-section .stack-group .skill-tags { max-width: 100%; row-gap: 9px; column-gap: 8px; }
 .stack-section .stack-group .skill-tags span { background: color-mix(in srgb, var(--paper) 72%, transparent); }
+/* Annotation refinements. */
+.project-link { margin-top: 24px; }
+.personal-section .section-label, .experience-section .section-label, .education-section .section-label, .research-section .section-label { font-size: .8rem; }
+.experience-tags span { color: var(--red); }
+.research-section .eyebrow { font-size: .78rem; }
+.education-copy > p, .education-copy > strong { color: var(--red); }
+
 /* Final alignment overrides. */
 .section-head { grid-template-columns: 1fr 1fr; }
 .stack-section .skill-tags span { display: inline-block; padding: 5px 7px; border: 1px solid var(--line); background: transparent; font-size: .76rem; line-height: 1.2; }
