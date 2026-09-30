@@ -58,6 +58,17 @@ button { font: inherit; }
 .stack-group > div:not(.stack-graphic) span { min-height: 30px; padding: 7px 10px; background: rgba(255,255,255,.22); font-size: .66rem; }
 .stack-node { display: none; }
 
+/* Editorial alignment annotations. */
+.section-head { grid-template-columns: 1fr 1fr; }
+.section-head h2 { justify-self: end; text-align: right; }
+.stack-section .stack-heading { display: grid; grid-template-columns: 1fr auto; align-items: start; margin-bottom: 54px; }
+.stack-section .stack-heading .section-label { justify-self: start; margin-top: 8px; }
+.stack-section .stack-heading h2 { justify-self: end; max-width: none; white-space: nowrap; font-size: clamp(2rem, 4vw, 4.2rem); text-align: right; }
+.stack-section .skill-tags { display: block !important; }
+.stack-section .skill-tags span { display: inline; padding: 0; border: 0; background: transparent; font: inherit; }
+.stack-section .skill-tags span:not(:last-child)::after { content: '  ·  '; color: var(--red); }
+.contact-links { align-items: flex-end; }
+.contact-links .external { justify-content: flex-end; text-align: right; }
 @media (max-width: 760px) {
   .stack-heading { flex-direction: column; gap: 24px; margin-bottom: 40px; }
   .stack-heading h2 { max-width: 300px; text-align: left; align-self: flex-end; font-size: clamp(2.8rem, 13vw, 4.2rem); }
@@ -183,6 +194,17 @@ button { font: inherit; }
 .stack-section .stack-group h3 { margin-top: 38px; font-size: 1.1rem; }
 .stack-section .stack-group .skill-tags { max-width: 100%; row-gap: 9px; column-gap: 8px; }
 .stack-section .stack-group .skill-tags span { background: color-mix(in srgb, var(--paper) 72%, transparent); }
+/* Final alignment overrides. */
+.section-head { grid-template-columns: 1fr 1fr; }
+.section-head h2 { justify-self: end; text-align: right; }
+.stack-section .stack-heading { display: grid; grid-template-columns: 1fr auto; align-items: start; margin-bottom: 54px; }
+.stack-section .stack-heading .section-label { justify-self: start; margin-top: 8px; }
+.stack-section .stack-heading h2 { justify-self: end; max-width: none; white-space: nowrap; font-size: clamp(2rem, 4vw, 4.2rem); text-align: right; }
+.stack-section .skill-tags { display: block !important; }
+.stack-section .skill-tags span { display: inline; padding: 0; border: 0; background: transparent; font: inherit; }
+.stack-section .skill-tags span:not(:last-child)::after { content: '  ·  '; color: var(--red); }
+.contact-links { align-items: flex-end; }
+.contact-links .external { justify-content: flex-end; text-align: right; }
 @media (max-width: 760px) {
   .stack-section .stack-heading h2 { max-width: 280px; }
   .stack-section .stack-map { gap: 14px; }
