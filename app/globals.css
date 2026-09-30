@@ -55,30 +55,7 @@ button { font: inherit; }
 .stack-group h3 { margin: 0 0 22px; font-size: 1.15rem; letter-spacing: -.04em; }
 .stack-group > div:not(.stack-graphic) { gap: 8px; }
 .stack-group > div:not(.stack-graphic) span { min-height: 30px; padding: 7px 10px; background: rgba(255,255,255,.22); font-size: .66rem; }
-  .stack-node { display: none; }
-
-  /* Personal builds: compact editorial cards inspired by the reference layout. */
-  .personal-section .section-head { grid-template-columns: 1fr 1.55fr; margin-bottom: 58px; }
-  .personal-section .section-head h2 { max-width: 560px; font-size: clamp(3.8rem, 8vw, 7.6rem); line-height: .8; text-transform: uppercase; }
-  .build-showcase { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; border: 0; }
-  .personal-panel { min-height: 390px; padding: 26px 24px 22px; border: 1px solid var(--line); border-right: 1px solid var(--line); background: transparent; }
-  .personal-panel:last-child { border-right: 1px solid var(--line); }
-  .build-card-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-  .build-status { color: var(--red); font: 700 .62rem ui-monospace, monospace; letter-spacing: .13em; }
-  .personal-panel h3 { margin: 52px 0 9px; max-width: 300px; font-size: clamp(1.7rem, 2.7vw, 2.55rem); line-height: .9; letter-spacing: -.07em; text-transform: uppercase; }
-  .personal-panel .project-subtitle { max-width: 270px; font-size: .74rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
-  .personal-panel ul { display: flex; flex-direction: column; gap: 8px; margin: 28px 0 0; padding: 0; list-style: none; color: var(--muted); font-size: .76rem; line-height: 1.35; }
-  .personal-panel li::before { content: '—'; margin-right: 8px; color: var(--red); font-weight: 800; }
-  .personal-panel .mini-visual { display: flex; flex-direction: column; gap: 12px; margin-top: 34px; padding-top: 16px; border-top: 1px solid var(--line); color: var(--red); }
-  .personal-panel .mini-visual span { font: 700 .58rem ui-monospace, monospace; letter-spacing: .14em; }
-  .personal-panel .mini-visual b { font: 700 .72rem ui-monospace, monospace; letter-spacing: .08em; }
-  @media (max-width: 700px) {
-    .personal-section .section-head { display: block; margin-bottom: 42px; }
-    .personal-section .section-head .section-label { margin-bottom: 26px; }
-    .personal-section .section-head h2 { font-size: clamp(3.4rem, 17vw, 5.4rem); }
-    .build-showcase { grid-template-columns: 1fr; gap: 12px; }
-    .personal-panel { min-height: 360px; }
-  }
+.stack-node { display: none; }
 
 @media (max-width: 760px) {
   .stack-heading { flex-direction: column; gap: 24px; margin-bottom: 40px; }
