@@ -255,7 +255,7 @@ button { font: inherit; }
 /* Subtle experience polish */
 .experience-station .station-copy h3 { min-height: 3.05em; font-size: clamp(1.5rem, 2vw, 2rem); line-height: .98; }
 .experience-station .station-copy .body-copy { margin-bottom: 28px; }
-.experience-station .station-visual { height: 104px; min-height: 104px; margin-bottom: 20px; transform: scale(1.04); transform-origin: center bottom; }
+.experience-station .station-visual { height: 104px; min-height: 104px; margin-bottom: 20px; transform: scale(1.04); transform-origin: center bottom; }.station-visual .syscon-waveform-image { display: block; width: 100%; height: 100%; object-fit: contain; object-position: center; border-radius: 4px; }
 .experience-station .experience-tags { margin-top: 0; align-items: flex-end; }
 @media (max-width: 760px) { .experience-station .station-copy h3 { min-height: 0; }.experience-station .station-copy .body-copy { margin-bottom: 20px; }.experience-station .station-visual { height: 104px; min-height: 104px; margin-top: 28px; transform: none; } }
 @media (max-width: 760px) { .experience-heading h2 { font-size: clamp(3.1rem, 14vw, 5rem); }.signal-path { margin: 0 0 34px 12px; padding-bottom: 0; }.signal-line { border-color: var(--line); }.signal-line::after { width: 0; animation: signalTravelVertical 6s linear infinite; }.signal-path i:nth-of-type(2),.signal-path i:last-child { transform: translateX(-37px); }.experience-station::before,.experience-station::after { display: none; }.experience-close { margin-top: 48px; font-size: .55rem; } }
