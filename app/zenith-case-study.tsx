@@ -10,6 +10,10 @@ const images = {
   hazard: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-BqrJF8Z3lssrxc0SDQZsp220e3z5tt.png',
   overview: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-eiBPRdospfj4qoSDeVzdeFy3RYGSxb.png',
   station: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-tatxiT4g0Cbv2TW8bsyj7pCeGTBdyP.png',
+  foodUi: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202026-09-30%20192916-PAzDiquO8brryJbVr89nm8avp1xI3H.png',
+  foodArchitecture: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202026-09-30%20192927-HpHRVZOlQEuhObDFZkl6oewF0RD1ZG.png',
+  foodDatabase: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202026-09-30%20192938-GgCGZi2yVNdqfOhGBwq4rhz3DVk4U6.png',
+  foodCheckout: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202026-09-30%20192946-jp3cQvEeSEjwhzojECQutoXwj1vJB3.png',
 } as const
 
 type ImageData = { src: string; alt: string; caption: string }
@@ -37,13 +41,30 @@ function Slide({ index, onOpen }: { index: number; onOpen: (data: ImageData) => 
   return <section className="zenith-slide takeaway"><span className="eyebrow">{labels[index]}</span><h2>Connecting remote sensing,<br />wireless transmission,<br /><em>and intelligent image analysis.</em></h2><p>College Project · Zenith Satellite System</p></section>
 }
 
-export function ZenithCaseStudy({ onClose }: { onClose: () => void }) {
+function FoodSlide({ index, onOpen }: { index: number; onOpen: (data: ImageData) => void }) {
+  const labels = ['01 / PROJECT DETAIL','02 / SYSTEM OVERVIEW','03 / SYSTEM ARCHITECTURE','04 / DATABASE & ORDER FLOW','05 / CHECKOUT & ORDER CONFIRMATION','06 / TECHNOLOGY STACK','07 / COMPLETE APPLICATION FLOW','08 / PROJECT TAKEAWAY']
+  const ui = image('foodUi', 'Food delivery menu and cart interface', 'FOOD DELIVERY / MENU / CART / CHECKOUT')
+  const architecture = image('foodArchitecture', 'Java MVC and DAO architecture diagram', 'JAVA MVC + DAO ARCHITECTURE')
+  const database = image('foodDatabase', 'Database structure and order flow diagram', 'DATABASE STRUCTURE & ORDER FLOW')
+  const checkout = image('foodCheckout', 'Checkout and order confirmation interface', 'CHECKOUT & ORDER CONFIRMATION')
+  if (index === 0) return <section className="zenith-slide zenith-intro-slide"><div><span className="eyebrow">{labels[0]}</span><h2>Online Food Delivery<br /><em>Web Application</em></h2></div><div className="zenith-intro-copy"><p className="kicker">FULL-STACK WEB APPLICATION</p><p className="tech">Java · JDBC · Servlets · JSP · MySQL · HTML · CSS</p><p>Developed a full-stack web application for online food ordering with login, restaurant menu browsing, cart management, checkout, sessions, and transaction processing.</p><ul className="deck-list"><li>Supports login, menu, cart and checkout</li><li>Uses MVC architecture with DAO pattern</li><li>Handles sessions and transaction processing</li></ul></div></section>
+  if (index === 1) return <section className="zenith-slide"><span className="eyebrow">{labels[1]}</span><h2>From menu browsing to<br /><span className="red">order completion.</span></h2><Media large data={ui} onOpen={onOpen} /><p className="slide-note">Food ordering interface with menu, cart and checkout flow.</p><Flow items={['LOGIN','MENU','CART','CHECKOUT','ORDER']} /></section>
+  if (index === 2) return <section className="zenith-slide"><span className="eyebrow">{labels[2]}</span><h2>Java MVC + DAO<br /><span className="red">Architecture</span></h2><div className="two-col"><Media large data={architecture} onOpen={onOpen} /><div><p className="slide-note">Browser → Controller → Service → DAO → MySQL</p><ul className="deck-list"><li>HTML · CSS · JSP</li><li>Java Servlets</li><li>Business Logic</li><li>JDBC</li><li>MySQL</li></ul></div></div></section>
+  if (index === 3) return <section className="zenith-slide"><span className="eyebrow">{labels[3]}</span><h2>Database Structure<br /><span className="red">&amp; Order Flow</span></h2><Media large data={database} onOpen={onOpen} /><Flow items={['USER','RESTAURANT','MENU ITEM','CART','ORDER','PAYMENT']} /></section>
+  if (index === 4) return <section className="zenith-slide"><span className="eyebrow">{labels[4]}</span><h2>From cart to<br /><span className="red">completed order.</span></h2><Media large data={checkout} onOpen={onOpen} /><Flow items={['CART','DELIVERY ADDRESS','PAYMENT','ORDER CONFIRMATION']} /></section>
+  if (index === 5) return <section className="zenith-slide"><span className="eyebrow">{labels[5]}</span><h2>Built with Java and<br /><span className="red">relational data.</span></h2><div className="zenith-flow">{['JAVA','JDBC','SERVLETS','JSP','MYSQL','HTML','CSS'].map((item) => <span key={item}>{item}</span>)}</div></section>
+  if (index === 6) return <section className="zenith-slide"><span className="eyebrow">{labels[6]}</span><h2>Complete Application Flow</h2><Flow items={['LOGIN','BROWSE MENU','ADD TO CART','CHECKOUT','PAYMENT','ORDER CONFIRMATION']} /><div className="info-grid">{[['FRONTEND','HTML · CSS · JSP'],['BACKEND','Java · Servlets · JDBC'],['DATABASE','MySQL'],['ARCHITECTURE','MVC · DAO']].map(([title, text]) => <div key={title}><strong>{title}</strong><p>{text}</p></div>)}</div></section>
+  return <section className="zenith-slide takeaway"><span className="eyebrow">{labels[7]}</span><h2>Connecting users, menus and transactions<br />through a structured <em>Java web application.</em></h2></section>
+}
+
+export function ZenithCaseStudy({ onClose, projectNumber = '01', onPrevious, onNext }: { onClose: () => void; projectNumber?: string; onPrevious?: () => void; onNext?: () => void }) {
   const [slide, setSlide] = useState(0)
   const [lightbox, setLightbox] = useState<ImageData | null>(null)
-  const total = 9
+  const isFood = projectNumber === '02'
+  const total = isFood ? 8 : 9
   const go = (next: number) => setSlide(Math.max(0, Math.min(total - 1, next)))
   useEffect(() => { document.body.style.overflow = 'hidden'; const key = (event: KeyboardEvent) => { if (event.key === 'Escape') lightbox ? setLightbox(null) : onClose(); if (event.key === 'ArrowRight') go(slide + 1); if (event.key === 'ArrowLeft') go(slide - 1) }; window.addEventListener('keydown', key); return () => { document.body.style.overflow = ''; window.removeEventListener('keydown', key) } }, [lightbox, slide])
-  return <div className="zenith-overlay" role="dialog" aria-modal="true" aria-label="Zenith Satellite System project presentation"><div className="zenith-card"><header className="zenith-card-top"><span>ZENITH SATELLITE SYSTEM</span><button type="button" onClick={onClose}>CLOSE ×</button></header><div className="zenith-card-content"><Slide index={slide} onOpen={setLightbox} /></div><footer className="zenith-card-nav"><button type="button" disabled={slide === 0} onClick={() => go(slide - 1)}>← PREVIOUS</button><nav aria-label="Project slides">{Array.from({ length: total }, (_, i) => <button key={i} type="button" className={i === slide ? 'active' : ''} onClick={() => go(i)}>{String(i + 1).padStart(2, '0')}</button>)}</nav><button type="button" disabled={slide === total - 1} onClick={() => go(slide + 1)}>NEXT →</button></footer></div>{lightbox && <div className="zenith-lightbox" role="dialog" aria-modal="true"><button type="button" onClick={() => setLightbox(null)}>CLOSE ×</button><img src={lightbox.src} alt={lightbox.alt} /></div>}</div>
+  return <div className="zenith-overlay" role="dialog" aria-modal="true" aria-label="Zenith Satellite System project presentation"><div className="zenith-card"><header className="zenith-card-top"><span>{isFood ? 'ONLINE FOOD DELIVERY WEB APPLICATION' : 'ZENITH SATELLITE SYSTEM'}</span><button type="button" onClick={onClose}>CLOSE ×</button></header><div className="zenith-card-content">{isFood ? <FoodSlide index={slide} onOpen={setLightbox} /> : <Slide index={slide} onOpen={setLightbox} />}</div><footer className="zenith-card-nav"><button type="button" onClick={onPrevious ?? (() => go(slide - 1))}>← PREVIOUS</button><nav aria-label="Project slides">{Array.from({ length: total }, (_, i) => <button key={i} type="button" className={i === slide ? 'active' : ''} onClick={() => go(i)}>{String(i + 1).padStart(2, '0')}</button>)}</nav><button type="button" onClick={onNext ?? (() => go(slide + 1))}>NEXT →</button></footer></div>{lightbox && <div className="zenith-lightbox" role="dialog" aria-modal="true"><button type="button" onClick={() => setLightbox(null)}>CLOSE ×</button><img src={lightbox.src} alt={lightbox.alt} /></div>}</div>
 }
 
 export default ZenithCaseStudy
