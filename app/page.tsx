@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import { ArrowDown, ArrowUpRight, Menu, X } from 'lucide-react'
 import './zenith.css'
+import { ZenithCaseStudy } from './zenith-case-study'
 
 const projects = [
   { number: '01', title: 'Zenith Satellite System', subtitle: 'Satellite-based hazard detection & environmental monitoring', tech: 'ESP32-CAM · Environmental Sensors · Arduino IDE · Dipole Transmitter', points: ['Detects hazards in remote areas', 'Monitors temperature, humidity and gas levels', 'Captures and transmits images using ESP32-CAM'], kind: 'signal' },
@@ -55,7 +56,7 @@ function ZenithImage({ src, alt, caption, onOpen }: { src: string; alt: string; 
   return <figure className="zenith-image"><button type="button" onClick={() => onOpen(src, alt)}><img src={src} alt={alt} /></button><figcaption><span>{caption}</span><b>OPEN IMAGE ↗</b></figcaption></figure>
 }
 
-function ZenithCaseStudy({ onClose }: { onClose: () => void }) {
+function ZenithCaseStudyLegacy({ onClose }: { onClose: () => void }) {
   const [lightbox, setLightbox] = useState<{ src: string; alt: string } | null>(null)
   useEffect(() => { const onKey = (event: KeyboardEvent) => { if (event.key === 'Escape') lightbox ? setLightbox(null) : onClose() }; document.body.style.overflow = 'hidden'; window.addEventListener('keydown', onKey); return () => { document.body.style.overflow = ''; window.removeEventListener('keydown', onKey) } }, [lightbox, onClose])
   const openImage = (src: string, alt: string) => setLightbox({ src, alt })
