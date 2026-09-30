@@ -14,6 +14,10 @@ const images = {
   foodArchitecture: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202026-09-30%20192927-HpHRVZOlQEuhObDFZkl6oewF0RD1ZG.png',
   foodDatabase: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202026-09-30%20192938-GgCGZi2yVNdqfOhGBwq4rhz3DVk4U6.png',
   foodCheckout: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202026-09-30%20192946-jp3cQvEeSEjwhzojECQutoXwj1vJB3.png',
+  wirelessOverview: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202026-09-30%20194453-Vj6xPIuOPLPNFnJvMEDXODx5b7WiTP.png',
+  wirelessArchitecture: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202026-09-30%20194504-A5Tl1MidDXTEqJWARg65wkT1RaCorH.png',
+  wirelessApp: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202026-09-30%20194513-UqmxUeHEV7XYPLFoaaigPHyN8pO3Jt.png',
+  wirelessOutput: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202026-09-30%20194520-sIsOvtFhTq5WKaFiOG4CQJwxCPkMbW.png',
 } as const
 
 type ImageData = { src: string; alt: string; caption: string }
@@ -57,14 +61,29 @@ function FoodSlide({ index, onOpen }: { index: number; onOpen: (data: ImageData)
   return <section className="zenith-slide takeaway"><span className="eyebrow">{labels[7]}</span><h2>Connecting users, menus and transactions<br />through a structured <em>Java web application.</em></h2></section>
 }
 
+function WirelessSlide({ index, onOpen }: { index: number; onOpen: (data: ImageData) => void }) {
+  const labels = ['01 / SYSTEM OVERVIEW','02 / SYSTEM ARCHITECTURE','03 / MOBILE APP & COMMUNICATION','04 / LCD DISPLAY OUTPUT','05 / SYSTEM FLOW','06 / PROJECT TAKEAWAY']
+  const overview = image('wirelessOverview', 'Arduino with Bluetooth module and LCD display for wireless notice board', 'Arduino with Bluetooth module and LCD display for wireless notice board.')
+  const architecture = image('wirelessArchitecture', 'Android App to Bluetooth to Arduino Uno to LCD Display system architecture', 'ANDROID APP → BLUETOOTH → ARDUINO UNO → LCD DISPLAY')
+  const app = image('wirelessApp', 'Android notice-board interface, message confirmation and serial monitor output', 'ANDROID APP / MESSAGE CONFIRMATION / SERIAL MONITOR')
+  const output = image('wirelessOutput', 'Four LCD notice-board outputs: academic notice, event notification, important reminder and welcome message', 'ACADEMIC NOTICE · EVENT NOTIFICATION · IMPORTANT REMINDER · WELCOME MESSAGE')
+  if (index === 0) return <section className="zenith-slide"><span className="eyebrow">{labels[0]}</span><h2>Wireless Display<br /><em>Notice Board</em></h2><Media large data={overview} onOpen={onOpen} /><p className="slide-note">Arduino with Bluetooth module and LCD display for wireless notice board.</p></section>
+  if (index === 1) return <section className="zenith-slide"><span className="eyebrow">{labels[1]}</span><h2>System <span className="red">Architecture</span></h2><Media large data={architecture} onOpen={onOpen} /><p className="slide-note">A Bluetooth-based communication system where messages are entered through a mobile interface, transmitted wirelessly to Arduino, processed by the controller, and displayed on the LCD.</p></section>
+  if (index === 2) return <section className="zenith-slide"><span className="eyebrow">{labels[2]}</span><h2>Android App <span className="red">Interface</span></h2><Media large data={app} onOpen={onOpen} /><ul className="deck-list"><li>Enter and send notice messages from the mobile interface</li><li>Transfer messages through Bluetooth communication</li><li>Arduino receives and forwards the message to the LCD</li></ul></section>
+  if (index === 3) return <section className="zenith-slide"><span className="eyebrow">{labels[3]}</span><h2>Notice Board <span className="red">Display</span></h2><Media large data={output} onOpen={onOpen} /><div className="wireless-output-captions"><span>Academic Notice</span><span>Event Notification</span><span>Important Reminder</span><span>Welcome Message</span></div></section>
+  if (index === 4) return <section className="zenith-slide"><span className="eyebrow">{labels[4]}</span><h2>Message to <span className="red">display.</span></h2><Flow items={['MESSAGE INPUT','BLUETOOTH','ARDUINO','MESSAGE PROCESSING','LCD DISPLAY']} /><p className="slide-note">Mobile message → wireless transmission → Arduino processing → real-time notice display</p></section>
+  return <section className="zenith-slide takeaway"><span className="eyebrow">{labels[5]}</span><h2>Wireless communication,<br />embedded control,<br /><em>and real-time information display.</em></h2><p>College Project · Wireless Display Notice Board</p></section>
+}
+
 export function ZenithCaseStudy({ onClose, projectNumber = '01', onPrevious, onNext }: { onClose: () => void; projectNumber?: string; onPrevious?: () => void; onNext?: () => void }) {
   const [slide, setSlide] = useState(0)
   const [lightbox, setLightbox] = useState<ImageData | null>(null)
   const isFood = projectNumber === '02'
-  const total = isFood ? 8 : 9
+  const isWireless = projectNumber === '03'
+  const total = isFood ? 8 : isWireless ? 6 : 9
   const go = (next: number) => setSlide(Math.max(0, Math.min(total - 1, next)))
   useEffect(() => { document.body.style.overflow = 'hidden'; const key = (event: KeyboardEvent) => { if (event.key === 'Escape') lightbox ? setLightbox(null) : onClose(); if (event.key === 'ArrowRight') go(slide + 1); if (event.key === 'ArrowLeft') go(slide - 1) }; window.addEventListener('keydown', key); return () => { document.body.style.overflow = ''; window.removeEventListener('keydown', key) } }, [lightbox, slide])
-  return <div className="zenith-overlay" role="dialog" aria-modal="true" aria-label="Zenith Satellite System project presentation"><div className="zenith-card"><header className="zenith-card-top"><span>{isFood ? 'ONLINE FOOD DELIVERY WEB APPLICATION' : 'ZENITH SATELLITE SYSTEM'}</span><button type="button" onClick={onClose}>CLOSE ×</button></header><div className="zenith-card-content">{isFood ? <FoodSlide index={slide} onOpen={setLightbox} /> : <Slide index={slide} onOpen={setLightbox} />}</div><footer className="zenith-card-nav"><button type="button" onClick={onPrevious ?? (() => go(slide - 1))}>← PREVIOUS</button><nav aria-label="Project slides">{Array.from({ length: total }, (_, i) => <button key={i} type="button" className={i === slide ? 'active' : ''} onClick={() => go(i)}>{String(i + 1).padStart(2, '0')}</button>)}</nav><button type="button" onClick={onNext ?? (() => go(slide + 1))}>NEXT →</button></footer></div>{lightbox && <div className="zenith-lightbox" role="dialog" aria-modal="true"><button type="button" onClick={() => setLightbox(null)}>CLOSE ×</button><img src={lightbox.src} alt={lightbox.alt} /></div>}</div>
+  return <div className="zenith-overlay" role="dialog" aria-modal="true" aria-label={isWireless ? 'Wireless Display Notice Board project presentation' : isFood ? 'Online Food Delivery Web Application project presentation' : 'Zenith Satellite System project presentation'}><div className="zenith-card"><header className="zenith-card-top"><span>{isWireless ? 'WIRELESS DISPLAY NOTICE BOARD' : isFood ? 'ONLINE FOOD DELIVERY WEB APPLICATION' : 'ZENITH SATELLITE SYSTEM'}</span><button type="button" onClick={onClose}>CLOSE ×</button></header><div className="zenith-card-content">{isWireless ? <WirelessSlide index={slide} onOpen={setLightbox} /> : isFood ? <FoodSlide index={slide} onOpen={setLightbox} /> : <Slide index={slide} onOpen={setLightbox} />}</div><footer className="zenith-card-nav"><button type="button" onClick={onPrevious ?? (() => go(slide - 1))}>← PREVIOUS</button><nav aria-label="Project slides">{Array.from({ length: total }, (_, i) => <button key={i} type="button" className={i === slide ? 'active' : ''} onClick={() => go(i)}>{String(i + 1).padStart(2, '0')}</button>)}</nav><button type="button" onClick={onNext ?? (() => go(slide + 1))}>NEXT →</button></footer></div>{lightbox && <div className="zenith-lightbox" role="dialog" aria-modal="true"><button type="button" onClick={() => setLightbox(null)}>CLOSE ×</button><img src={lightbox.src} alt={lightbox.alt} /></div>}</div>
 }
 
 export default ZenithCaseStudy
