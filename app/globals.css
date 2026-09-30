@@ -47,7 +47,7 @@ button { font: inherit; }
 .stack-heading { display: flex; justify-content: space-between; align-items: flex-start; gap: 32px; margin-bottom: 66px; }
 .stack-heading .section-label { margin-top: 12px; }
 .stack-heading h2 { margin: 0; max-width: 430px; text-align: right; color: var(--ink); font-size: clamp(2.8rem, 5.6vw, 5.25rem); line-height: .86; letter-spacing: -.09em; }
-.stack-heading-accent { color: var(--red); }
+.stack-heading-accent { color: var(--red); font-weight: 900; text-shadow: 0 0 0 currentColor; }
 .stack-map { gap: 20px; border: 0; }
 .stack-group { position: relative; min-height: 286px; padding: 67px 26px 28px; border: 1px solid var(--line); border-right: 1px solid var(--line); background: rgba(255,255,255,.12); clip-path: polygon(0 0, 78px 0, 101px 27px, 100% 27px, 100% 100%, 0 100%); }
 .stack-group:last-child { border-right: 1px solid var(--line); }
@@ -61,6 +61,9 @@ button { font: inherit; }
 /* Editorial alignment annotations. */
 .section-head { grid-template-columns: 1fr 1fr; }
 .section-head h2 { justify-self: end; text-align: right; }
+.heading-accent { color: var(--red); }
+.project-points { display: flex; flex-direction: column; gap: 8px; margin: 22px 0 0; padding: 0; list-style: none; color: var(--muted); font-size: .76rem; line-height: 1.35; }
+.project-points li::before { content: '—'; margin-right: 8px; color: var(--red); font-weight: 800; }
 .stack-section .stack-heading { display: grid; grid-template-columns: 1fr auto; align-items: start; margin-bottom: 54px; }
 .stack-section .stack-heading .section-label { justify-self: start; margin-top: 8px; }
 .stack-section .stack-heading h2 { justify-self: end; max-width: none; white-space: nowrap; font-size: clamp(2rem, 4vw, 4.2rem); text-align: right; }
@@ -163,7 +166,7 @@ button { font: inherit; }
 /* Skills reference layout: three equal technical cards with compact tag rows. */
 .stack-section .stack-heading { display: flex; flex-direction: column; align-items: flex-end; gap: 18px; margin-bottom: 34px; }
 .stack-section .stack-heading h2 { margin: 0; max-width: 250px; font-size: clamp(2.35rem, 5.2vw, 5.4rem); line-height: .86; letter-spacing: -.09em; }
-.stack-heading-accent { color: var(--red); }
+.stack-heading-accent { color: var(--red); font-weight: 900; text-shadow: 0 0 0 currentColor; }
 .stack-map { gap: 10px; border: 0; }
 .stack-group { position: relative; min-height: 386px; height: 386px; padding: 30px 26px 24px; border: 1px solid var(--line); background: color-mix(in srgb, var(--paper) 94%, transparent); }
 .stack-group:last-child { border-right: 1px solid var(--line); }
@@ -196,6 +199,8 @@ button { font: inherit; }
 .stack-section .stack-group .skill-tags span { background: color-mix(in srgb, var(--paper) 72%, transparent); }
 /* Final alignment overrides. */
 .section-head { grid-template-columns: 1fr 1fr; }
+.stack-section .skill-tags span { display: inline-block; padding: 5px 7px; border: 1px solid var(--line); background: transparent; font-size: .76rem; line-height: 1.2; }
+.stack-section .skill-tags span:not(:last-child)::after { content: none; }
 .section-head h2 { justify-self: end; text-align: right; }
 .stack-section .stack-heading { display: grid; grid-template-columns: 1fr auto; align-items: start; margin-bottom: 54px; }
 .stack-section .stack-heading .section-label { justify-self: start; margin-top: 8px; }
