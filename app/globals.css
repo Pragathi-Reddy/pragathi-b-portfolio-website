@@ -42,7 +42,11 @@ button { font: inherit; }
 
 .stack-heading-accent, .stack-group h3 { color: var(--red); }
 
-/* Skills reference layout: three equal engineering cards with chamfered corners. */
+/* Skills reference layout: compact equal engineering cards. */
+.stack-section .stack-map { align-items: stretch; }
+.stack-section .stack-group { min-height: 0; height: 286px; padding-bottom: 22px; }
+.stack-section .stack-group .skill-tags { gap: 8px 10px; }
+.stack-section .stack-group .skill-tags span { margin: 0; }
 .stack-section { padding-bottom: 118px; }
 .stack-heading { display: flex; justify-content: space-between; align-items: flex-start; gap: 32px; margin-bottom: 66px; }
 .stack-heading .section-label { margin-top: 12px; }
@@ -76,7 +80,7 @@ button { font: inherit; }
   .stack-heading { flex-direction: column; gap: 24px; margin-bottom: 40px; }
   .stack-heading h2 { max-width: 300px; text-align: left; align-self: flex-end; font-size: clamp(2.8rem, 13vw, 4.2rem); }
   .stack-map { grid-template-columns: 1fr; gap: 14px; }
-  .stack-group { min-height: 0; padding: 62px 20px 24px; }
+  .stack-group { min-height: 0; height: auto; padding: 62px 20px 24px; }
   .stack-group h3 { font-size: 1.15rem; }
 }
 
