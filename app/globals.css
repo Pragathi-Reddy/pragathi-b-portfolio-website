@@ -43,6 +43,12 @@ button { font: inherit; }
 .stack-heading-accent, .stack-group h3 { color: var(--red); }
 
 /* Skills reference layout: compact equal engineering cards. */
+.stack-section .stack-group { border-color: #111; box-shadow: inset 0 0 0 1px #111; }
+.stack-section .stack-group h3 { font-weight: 800; }
+.stack-section .skill-tags { gap: 10px 12px !important; }
+.project-link { padding: 10px 14px; border: 1px solid var(--red); background: var(--red); color: #fff; }
+.project-link:hover { background: var(--ink); border-color: var(--ink); color: #fff; }
+.how-title { font-size: .82rem; font-weight: 800; }
 .stack-section .stack-map { align-items: stretch; }
 .stack-section .stack-group { min-height: 0; height: 286px; padding-bottom: 22px; }
 .stack-section .stack-group .skill-tags { gap: 8px 10px; }
