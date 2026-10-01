@@ -383,6 +383,7 @@ main { display: flex; flex-direction: column; } main > header { order: 0; } main
 @keyframes workLineReveal { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
 @media (prefers-reduced-motion: reduce) { #what-i-work-with .work-with-lines span { animation: none; transition: none; } }
 /* Experience supporting-line interaction */
+#experience .section-support > .section-label { color: var(--red); }
 #experience .experience-lines { display: flex; flex-direction: column; align-items: flex-start; gap: 0; }
 #experience .experience-lines span { position: relative; color: var(--muted); transition: color .24s ease, transform .24s ease, opacity .24s ease; animation: experienceLineReveal .42s ease-out both; }
 #experience .experience-lines span:nth-child(1) { animation-delay: 60ms; } #experience .experience-lines span:nth-child(2) { animation-delay: 120ms; } #experience .experience-lines span:nth-child(3) { animation-delay: 180ms; } #experience .experience-lines span:nth-child(4) { animation-delay: 240ms; }
