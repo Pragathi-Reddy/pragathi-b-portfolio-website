@@ -430,6 +430,23 @@ main { display: flex; flex-direction: column; } main > header { order: 0; } main
 #work .food-ui-bottom button { border: 1px solid var(--red); padding: 7px 9px; background: transparent; color: var(--red); font: 700 7px ui-monospace, monospace; letter-spacing: .05em; cursor: pointer; transition: background-color .2s ease, color .2s ease; }.food-ui-bottom button:hover { background: var(--red); color: #fff; }
 @keyframes orderReadyPulse { 0%,100% { opacity: .55; transform: scale(1); } 50% { opacity: 1; transform: scale(1.25); } }
 @media (prefers-reduced-motion: reduce) { #work .food-ui-top small i { animation: none; } #work .food-item, #work .food-ui-bottom button { transition: none; } }
+/* Food ordering UI refinement */
+#work .food-order-ui { position: relative; overflow: hidden; }
+#work .food-order-ui::after { content: ''; position: absolute; left: 14px; right: 14px; top: 49%; height: 1px; background: var(--red); opacity: .11; pointer-events: none; animation: menuScan 5.6s linear infinite; }
+#work .food-menu { position: relative; }
+#work .food-item { position: relative; animation: menuFloat 4.8s ease-in-out infinite; }
+#work .food-item:nth-child(2) { animation-delay: .4s; } #work .food-item:nth-child(3) { animation-delay: .8s; } #work .food-item:nth-child(4) { animation-delay: 1.2s; }
+#work .food-item::before { content: ''; width: 3px; height: 3px; margin-right: 4px; border-radius: 50%; background: var(--red); opacity: 0; transition: opacity .2s ease; }
+#work .food-item.is-active::before, #work .food-item:hover::before { opacity: .8; }
+#work .food-item:hover { background: rgba(190,36,38,.035); }
+#work .food-cart { position: relative; overflow: hidden; border-color: #d8d5cf; }
+#work .food-cart::after { content: ''; position: absolute; inset: 0; border: 1px solid var(--red); opacity: .2; clip-path: inset(0 85% 96% 0); animation: cartBorderTravel 4.8s linear infinite; pointer-events: none; }
+#work .food-cart span:last-child b { animation: totalEmphasis 4s ease-in-out infinite; }
+#work .food-ui-bottom small { animation: techPulse 3.8s ease-in-out infinite; }
+#work .food-ui-bottom button svg { animation: orderArrow 3.4s ease-in-out infinite; }
+#work .food-order-ui:hover .food-ui-bottom small, #work .food-order-ui:hover .food-ui-top small { opacity: 1; }
+@keyframes menuScan { 0%, 8% { transform: translateX(-100%); } 55%, 100% { transform: translateX(100%); } } @keyframes menuFloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-.7px); } } @keyframes cartBorderTravel { 0% { clip-path: inset(0 85% 96% 0); } 25% { clip-path: inset(0 0 96% 0); } 50% { clip-path: inset(0 0 0 96%); } 75% { clip-path: inset(96% 0 0 0); } 100% { clip-path: inset(0 85% 96% 0); } } @keyframes totalEmphasis { 0%,78%,100% { opacity: .8; } 86% { opacity: 1; } } @keyframes techPulse { 0%,100% { opacity: .62; } 50% { opacity: .9; } } @keyframes orderArrow { 0%,72%,100% { transform: translateX(0); } 82% { transform: translateX(3px); } }
+@media (prefers-reduced-motion: reduce) { #work .food-order-ui::after, #work .food-item, #work .food-cart::after, #work .food-cart span:last-child b, #work .food-ui-bottom small, #work .food-ui-bottom button svg { animation: none; } }
 /* Projects supporting text */
 #work .projects-section-head { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) minmax(300px, 46%); align-items: start; column-gap: 28px; min-height: 174px; margin: 0 0 24px; }
 #work .projects-section-head .section-support { grid-column: 1; grid-row: 1; justify-self: start; text-align: left; }
