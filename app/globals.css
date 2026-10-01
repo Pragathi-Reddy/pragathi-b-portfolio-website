@@ -418,7 +418,7 @@ main { display: flex; flex-direction: column; } main > header { order: 0; } main
 #education .education-cards { margin-bottom: 0; }
 @media (max-width: 620px) { #education { padding-bottom: 32px; margin-bottom: 26px; } #education .education-heading { margin-bottom: 14px; } #education .education-timeline { margin-bottom: 12px; } }
 /* Food ordering project visual */
-#work .project-visual.database .food-order-ui { display: flex; flex-direction: column; justify-content: space-between; gap: 14px; width: 100%; height: 100%; padding: 14px; background: #fbfaf7; color: var(--ink); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+#work .project-visual.database .food-order-ui { display: block; width: 100%; height: 100%; overflow: hidden; background: #fbfaf7; } #work .project-visual.database .food-order-ui img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; }
 #work .food-ui-top, #work .food-ui-bottom { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 #work .food-ui-top > span, #work .food-ui-label { font-size: 9px; font-weight: 700; letter-spacing: .12em; }
 #work .food-ui-top small, #work .food-ui-bottom small { color: var(--muted); font-size: 7px; letter-spacing: .08em; }
