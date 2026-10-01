@@ -446,6 +446,16 @@ main { display: flex; flex-direction: column; } main > header { order: 0; } main
 @keyframes skillsTabPulse { 0% { width: 0; opacity: .35; } 55% { width: 20px; opacity: 1; } 100% { width: 16px; opacity: .75; } } @keyframes skillsHoverPulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.13); } }
 @media (max-width: 760px) { #stack .stack-map { transform: translateY(-26px); } #stack .stack-group:hover { transform: translateY(-29px); } }
 @media (prefers-reduced-motion: reduce) { #stack .stack-map, #stack .stack-group, #stack .stack-group:hover, #stack .skill-tags > span { transition: none; transform: none; } #stack .stack-group:hover .stack-index::after, #stack .stack-group:hover .stack-node { animation: none; } }
+/* Final 05 / SKILLS polish */
+#stack .stack-map { transform: translateY(-25px); }
+#stack .stack-group { background-image: linear-gradient(rgba(80,76,72,.012) 1px, transparent 1px), linear-gradient(90deg, rgba(80,76,72,.012) 1px, transparent 1px); background-size: 28px 28px; transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
+#stack .stack-group h3 { margin-bottom: 24px; }
+#stack .skill-tags > span { padding-left: 13px !important; padding-right: 13px !important; transition: transform .22s ease, border-color .22s ease, color .22s ease, background-color .22s ease; }
+#stack .skill-tags > span:hover { transform: translateY(-2px); border-color: var(--red) !important; color: var(--red) !important; background: color-mix(in srgb, var(--red) 3%, transparent) !important; }
+#stack .stack-group:hover { transform: translateY(-27px); border-color: color-mix(in srgb, var(--ink) 45%, var(--line)); box-shadow: 0 5px 12px rgba(20,18,16,.045); }
+#stack .stack-group:hover .stack-index { color: color-mix(in srgb, var(--red) 88%, white); }
+@media (max-width: 760px) { #stack .stack-map { transform: translateY(-15px); } #stack .stack-group:hover { transform: translateY(-17px); } }
+@media (prefers-reduced-motion: reduce) { #stack .stack-map, #stack .stack-group, #stack .stack-group:hover, #stack .skill-tags > span { transition: none; transform: none; } }
 /* Final skill-tag isolation override */
  #stack .skill-tags { display: flex !important; flex-direction: row !important; flex-wrap: wrap !important; align-items: flex-start !important; justify-content: flex-start !important; column-gap: 10px !important; row-gap: 8px !important; border: none !important; background: transparent !important; border-collapse: initial !important; }
  #stack .skill-tags > span { display: inline-flex !important; width: fit-content !important; min-width: fit-content !important; flex: 0 0 auto !important; margin: 0 !important; padding: 7px 11px !important; border: 1px solid #d5d2cc !important; border-radius: 0 !important; box-sizing: border-box !important; background: transparent !important; }
