@@ -517,6 +517,12 @@ main { display: flex; flex-direction: column; } main > header { order: 0; } main
 #research .stats { margin-top: 14px; }
 #research .research-grid > div:first-child { padding-top: 0; }
 @media (max-width: 760px) { #research.research-section { padding-top: 20px; padding-bottom: 22px; } #research .research-heading { gap: 14px; margin-bottom: 20px; } #research .research-heading h2 { font-size: clamp(3rem, 12vw, 4.4rem); } #research .research-grid { gap: 24px; } #research .research-grid h3 { font-size: 1.1rem; } #research .research-grid > .research-visual { max-width: 100%; min-height: 260px; } }
+/* Final 07 / RESEARCH image placement */
+#research .research-grid { align-items: start; }
+#research .research-grid > .research-visual { align-self: start; margin-top: -72px; padding: 0; border: 0; border-radius: 0; outline: 0; background: transparent; box-shadow: none; }
+#research .research-grid > .research-visual::before, #research .research-grid > .research-visual::after { display: none; }
+#research .research-grid > .research-visual img { display: block; width: 100%; height: auto; border: 0; border-radius: 0; box-shadow: none; object-fit: contain; }
+@media (max-width: 760px) { #research .research-grid > .research-visual { margin-top: 0; max-width: 100%; } }
 /* Final skill-tag isolation override */
  #stack .skill-tags { display: flex !important; flex-direction: row !important; flex-wrap: wrap !important; align-items: flex-start !important; justify-content: flex-start !important; column-gap: 10px !important; row-gap: 8px !important; border: none !important; background: transparent !important; border-collapse: initial !important; }
  #stack .skill-tags > span { display: inline-flex !important; width: fit-content !important; min-width: fit-content !important; flex: 0 0 auto !important; margin: 0 !important; padding: 7px 11px !important; border: 1px solid #d5d2cc !important; border-radius: 0 !important; box-sizing: border-box !important; background: transparent !important; }
