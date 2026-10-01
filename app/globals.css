@@ -374,6 +374,14 @@ main { display: flex; flex-direction: column; } main > header { order: 0; } main
 /* Editorial supporting copy */
 .section-head .section-support { align-self: start; justify-self: start; text-align: left; }.section-head .section-support .section-label { margin: 0 0 24px; }.section-head .section-support > p { margin: 0; color: var(--muted); font: 700 .64rem/1.45 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .12em; text-transform: uppercase; }.experience-heading .section-support > i { display: block; width: 34px; height: 1px; margin-top: 16px; background: var(--red); }.experience-heading .section-support { grid-column: 1; grid-row: 1; }.experience-heading > div:not(.section-support) { grid-column: 2; grid-row: 1; }.experience-heading > div:not(.section-support) h2 { text-align: right; }.personal-section > .section-head > .section-support { grid-column: 1; grid-row: 1; }.personal-section > .section-head > h2 { grid-column: 2; grid-row: 1; text-align: right; justify-self: end; }
 @media (max-width: 760px) { .section-head .section-support { grid-column: 1; grid-row: 1; }.personal-section > .section-head > h2,.experience-heading > div:not(.section-support) { grid-column: 1; grid-row: 2; }.experience-heading > div:not(.section-support) h2 { text-align: left; } }
+/* What I Work With supporting-line interaction */
+#what-i-work-with .work-with-lines { display: flex; flex-direction: column; align-items: flex-start; gap: 0; }
+#what-i-work-with .work-with-lines span { position: relative; color: var(--muted); transition: color .24s ease, transform .24s ease, opacity .24s ease; animation: workLineReveal .42s ease-out both; }
+#what-i-work-with .work-with-lines span:nth-child(1) { animation-delay: 60ms; } #what-i-work-with .work-with-lines span:nth-child(2) { animation-delay: 120ms; } #what-i-work-with .work-with-lines span:nth-child(3) { animation-delay: 180ms; } #what-i-work-with .work-with-lines span:nth-child(4) { animation-delay: 240ms; }
+#what-i-work-with .work-with-lines span:hover, #what-i-work-with .work-with-lines span.is-scroll-highlight { color: var(--red); }
+#what-i-work-with .work-with-lines .is-refine::after { content: ''; display: block; width: 28px; height: 1px; margin-top: 5px; background: var(--red); }
+@keyframes workLineReveal { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+@media (prefers-reduced-motion: reduce) { #what-i-work-with .work-with-lines span { animation: none; transition: none; } }
 /* Annotated section alignment */
 #what-i-work-with .section-head .section-support > .section-label { color: var(--red); }
 #experience .experience-heading .section-support { grid-column: 1; grid-row: 1; justify-self: start; align-self: start; text-align: left; }
