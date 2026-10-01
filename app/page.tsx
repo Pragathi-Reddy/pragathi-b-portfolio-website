@@ -123,8 +123,9 @@ function SchedulerGallery({ onClose }: { onClose: () => void }) {
 }
 
 function ProjectVisual({ kind }: { kind: string }) {
+  if (kind === 'signal') return <div className="project-visual signal" aria-hidden="true"><img className="signal-project-image" src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Zenith%20Satellite%20Monitoring%20Dashboard-tzAZcV6geq9KFL2h2TrvkFCfuJPFfc.png" alt="Zenith satellite monitoring dashboard with live image feed, environmental data, and hazard detection" /></div>
   if (kind === 'database') return <div className="project-visual database" aria-hidden="true"><img className="database-project-image" src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Minimalist%20Restaurant%20Order%20Dashboard-KQUfUBRcEskxppnR6Q5UXGHKN6zVaM.png" alt="Minimalist restaurant order dashboard for the online food delivery project" /></div>
-  return <div className={`project-visual ${kind}`} aria-hidden="true"><div className="visual-frame"><span className="visual-caption">SYSTEM / {kind.toUpperCase()}</span>{kind === 'signal' && <><div className="radar" /><div className="signal-path"><i /><i /><i /><i /></div><span className="sensor-readout">TEMP 28°C<br />HUM 64%<br />GAS 0.04</span><span className="hazard">HAZARD<br />DETECTED</span></>}{kind === 'bluetooth' && <><div className="bt-ring" /><div className="bt-line" /><div className="bt-device">ARDUINO</div><div className="bt-screen">DISPLAY<br />NOTICE</div></>}</div></div>
+  return <div className={`project-visual ${kind}`} aria-hidden="true"><div className="visual-frame"><span className="visual-caption">SYSTEM / {kind.toUpperCase()}</span>{kind === 'bluetooth' && <><div className="bt-ring" /><div className="bt-line" /><div className="bt-device">ARDUINO</div><div className="bt-screen">DISPLAY<br />NOTICE</div></>}</div></div>
 }
 
 export default function Page() {

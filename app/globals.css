@@ -418,7 +418,7 @@ main { display: flex; flex-direction: column; } main > header { order: 0; } main
 #education .education-cards { margin-bottom: 0; }
 @media (max-width: 620px) { #education { padding-bottom: 32px; margin-bottom: 26px; } #education .education-heading { margin-bottom: 14px; } #education .education-timeline { margin-bottom: 12px; } }
 /* Food ordering project visual */
-#work .project-visual.database { display: block; width: 100%; height: auto; min-height: 0; padding: 0; border: 0; background: transparent; box-shadow: none; overflow: visible; } #work .project-visual.database .database-project-image { display: block; width: 100%; height: auto; margin: 0; padding: 0; border: 0; object-fit: contain; object-position: center; }
+#work .project-visual.database, #work .project-visual.signal { display: block; width: 100%; height: auto; min-height: 0; padding: 0; border: 0; background: transparent; box-shadow: none; overflow: visible; } #work .project-visual.database .database-project-image, #work .project-visual.signal .signal-project-image { display: block; width: 100%; height: auto; margin: 0; padding: 0; border: 0; object-fit: contain; object-position: center; }
 #work .food-ui-top, #work .food-ui-bottom { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 #work .food-ui-top > span, #work .food-ui-label { font-size: 9px; font-weight: 700; letter-spacing: .12em; }
 #work .food-ui-top small, #work .food-ui-bottom small { color: var(--muted); font-size: 7px; letter-spacing: .08em; }
