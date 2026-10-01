@@ -417,6 +417,19 @@ main { display: flex; flex-direction: column; } main > header { order: 0; } main
 #education .education-timeline { margin-top: 0; margin-bottom: 12px; }
 #education .education-cards { margin-bottom: 0; }
 @media (max-width: 620px) { #education { padding-bottom: 32px; margin-bottom: 26px; } #education .education-heading { margin-bottom: 14px; } #education .education-timeline { margin-bottom: 12px; } }
+/* Food ordering project visual */
+#work .project-visual.database .food-order-ui { display: flex; flex-direction: column; justify-content: space-between; gap: 14px; width: 100%; height: 100%; padding: 14px; background: #fbfaf7; color: var(--ink); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+#work .food-ui-top, #work .food-ui-bottom { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+#work .food-ui-top > span, #work .food-ui-label { font-size: 9px; font-weight: 700; letter-spacing: .12em; }
+#work .food-ui-top small, #work .food-ui-bottom small { color: var(--muted); font-size: 7px; letter-spacing: .08em; }
+#work .food-ui-top small { display: inline-flex; align-items: center; gap: 4px; }.food-ui-top small i { width: 4px; height: 4px; border-radius: 50%; background: var(--red); animation: orderReadyPulse 1.8s ease-in-out infinite; }
+#work .food-ui-body { display: grid; grid-template-columns: 1.4fr .85fr; gap: 12px; flex: 1; min-height: 0; }
+#work .food-menu, #work .food-cart { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+#work .food-menu { border-right: 1px solid #d8d5cf; padding-right: 10px; }.food-item { display: flex; align-items: center; justify-content: space-between; gap: 6px; min-height: 24px; border-bottom: 1px solid #e5e2dd; font-size: 7px; transition: transform .2s ease, color .2s ease; }.food-item:hover { transform: translateX(2px); color: var(--red); }.food-item b { font-size: 7px; font-weight: 500; }.food-item span { white-space: nowrap; color: var(--muted); }.food-item i { display: inline-block; padding: 0 3px; font-style: normal; }.food-item em { font-style: normal; color: var(--ink); }
+#work .food-cart { border: 1px solid #d8d5cf; padding: 9px; gap: 10px; font-size: 7px; }.food-cart span:not(.food-ui-label) { display: flex; justify-content: space-between; gap: 8px; color: var(--muted); }.food-cart span:last-child { padding-top: 7px; border-top: 1px solid #d8d5cf; color: var(--ink); }.food-cart b { color: var(--ink); font-weight: 600; }
+#work .food-ui-bottom button { border: 1px solid var(--red); padding: 7px 9px; background: transparent; color: var(--red); font: 700 7px ui-monospace, monospace; letter-spacing: .05em; cursor: pointer; transition: background-color .2s ease, color .2s ease; }.food-ui-bottom button:hover { background: var(--red); color: #fff; }
+@keyframes orderReadyPulse { 0%,100% { opacity: .55; transform: scale(1); } 50% { opacity: 1; transform: scale(1.25); } }
+@media (prefers-reduced-motion: reduce) { #work .food-ui-top small i { animation: none; } #work .food-item, #work .food-ui-bottom button { transition: none; } }
 /* Projects supporting text */
 #work .projects-section-head { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) minmax(300px, 46%); align-items: start; column-gap: 28px; min-height: 174px; margin: 0 0 24px; }
 #work .projects-section-head .section-support { grid-column: 1; grid-row: 1; justify-self: start; text-align: left; }
