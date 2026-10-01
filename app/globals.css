@@ -468,6 +468,13 @@ main { display: flex; flex-direction: column; } main > header { order: 0; } main
 #stack .stack-group:hover .stack-index { color: color-mix(in srgb, var(--red) 88%, white); }
 @media (max-width: 760px) { #stack .stack-map { transform: translateY(-15px); } #stack .stack-group:hover { transform: translateY(-17px); } }
 @media (prefers-reduced-motion: reduce) { #stack .stack-map, #stack .stack-group, #stack .stack-group:hover, #stack .skill-tags > span { transition: none; transform: none; } }
+/* Skills support/card visual connection */
+#stack .skills-support-lines { gap: 3px; font-size: .76rem; line-height: 1.9; }
+#stack .skills-support-lines span { transition: color .24s ease, opacity .24s ease; }
+#stack .skills-support-lines span::before { transition: opacity .24s ease, transform .24s ease; }
+#stack:has(.hardware-stack:hover) .skills-support-lines span:nth-child(1), #stack:has(.software-stack:hover) .skills-support-lines span:nth-child(2), #stack:has(.tools-stack:hover) .skills-support-lines span:nth-child(3) { color: var(--red); }
+#stack:has(.hardware-stack:hover) .skills-support-lines span:nth-child(1)::before, #stack:has(.software-stack:hover) .skills-support-lines span:nth-child(2)::before, #stack:has(.tools-stack:hover) .skills-support-lines span:nth-child(3)::before { opacity: 1; transform: translate(0, -50%); }
+@media (prefers-reduced-motion: reduce) { #stack .skills-support-lines span, #stack .skills-support-lines span::before { transition: none; } }
 /* Final skill-tag isolation override */
  #stack .skill-tags { display: flex !important; flex-direction: row !important; flex-wrap: wrap !important; align-items: flex-start !important; justify-content: flex-start !important; column-gap: 10px !important; row-gap: 8px !important; border: none !important; background: transparent !important; border-collapse: initial !important; }
  #stack .skill-tags > span { display: inline-flex !important; width: fit-content !important; min-width: fit-content !important; flex: 0 0 auto !important; margin: 0 !important; padding: 7px 11px !important; border: 1px solid #d5d2cc !important; border-radius: 0 !important; box-sizing: border-box !important; background: transparent !important; }
