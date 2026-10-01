@@ -417,6 +417,18 @@ main { display: flex; flex-direction: column; } main > header { order: 0; } main
 #education .education-timeline { margin-top: 0; margin-bottom: 12px; }
 #education .education-cards { margin-bottom: 0; }
 @media (max-width: 620px) { #education { padding-bottom: 32px; margin-bottom: 26px; } #education .education-heading { margin-bottom: 14px; } #education .education-timeline { margin-bottom: 12px; } }
+/* Skills supporting text */
+#stack .skills-support { display: flex; flex-direction: column; align-items: flex-start; justify-self: start; min-width: 0; }
+#stack .skills-support > .section-label { margin-bottom: 22px; }
+#stack .skills-support-lines { display: flex; flex-direction: column; align-items: flex-start; gap: 0; margin: 0; font: 500 .68rem/1.75 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .12em; }
+#stack .skills-support-lines span { position: relative; color: var(--muted); transition: color .22s ease, opacity .22s ease; animation: skillsSupportReveal .36s ease-out both; }
+#stack .skills-support-lines span:nth-child(1) { animation-delay: 80ms; } #stack .skills-support-lines span:nth-child(2) { animation-delay: 230ms; } #stack .skills-support-lines span:nth-child(3) { animation-delay: 380ms; }
+#stack .skills-support-lines span:hover { color: var(--red); }
+#stack .skills-support-lines span::before { content: ''; position: absolute; left: -13px; top: 50%; width: 4px; height: 4px; border-radius: 50%; background: var(--red); opacity: 0; transform: translate(-5px, -50%); transition: opacity .2s ease, transform .2s ease; }
+#stack .skills-support-lines span:hover::before { opacity: 1; transform: translate(0, -50%); }
+#stack .skills-support-lines .is-final::after { content: ''; display: block; width: 28px; height: 1px; margin-top: 4px; background: var(--red); }
+@keyframes skillsSupportReveal { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+@media (prefers-reduced-motion: reduce) { #stack .skills-support-lines span { animation: none; transition: none; } #stack .skills-support-lines span::before { transition: none; } }
 /* 05 / SKILLS technical interaction refinement */
 #stack .stack-heading { margin-bottom: 24px; }
 #stack .stack-group { position: relative; overflow: hidden; background-image: linear-gradient(rgba(80,76,72,.055) 1px, transparent 1px), linear-gradient(90deg, rgba(80,76,72,.055) 1px, transparent 1px); background-size: 28px 28px; transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
