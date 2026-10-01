@@ -417,6 +417,22 @@ main { display: flex; flex-direction: column; } main > header { order: 0; } main
 #education .education-timeline { margin-top: 0; margin-bottom: 12px; }
 #education .education-cards { margin-bottom: 0; }
 @media (max-width: 620px) { #education { padding-bottom: 32px; margin-bottom: 26px; } #education .education-heading { margin-bottom: 14px; } #education .education-timeline { margin-bottom: 12px; } }
+/* 05 / SKILLS technical interaction refinement */
+#stack .stack-heading { margin-bottom: 24px; }
+#stack .stack-group { position: relative; overflow: hidden; background-image: linear-gradient(rgba(80,76,72,.055) 1px, transparent 1px), linear-gradient(90deg, rgba(80,76,72,.055) 1px, transparent 1px); background-size: 28px 28px; transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
+#stack .stack-group::after { content: ''; position: absolute; left: -35%; top: 0; width: 35%; height: 1px; background: var(--red); opacity: 0; pointer-events: none; }
+#stack .stack-group:hover { transform: translateY(-3px); box-shadow: 0 5px 14px rgba(20,18,16,.055); }
+#stack .stack-group:hover::after { opacity: .75; animation: skillsScanOnce .65s ease-out 1; }
+#stack .stack-index { position: relative; display: inline-block; transition: color .2s ease, filter .2s ease; }
+#stack .stack-index::after { content: ''; position: absolute; left: calc(100% + 7px); top: 50%; width: 0; height: 1px; background: var(--red); transition: width .22s ease; }
+#stack .stack-group:hover .stack-index { color: color-mix(in srgb, var(--red) 78%, white); }
+#stack .stack-group:hover .stack-index::after { width: 16px; }
+#stack .skill-tags > span { transition: transform .22s ease, border-color .22s ease, color .22s ease, background-color .22s ease; }
+#stack .skill-tags > span:hover { transform: translateY(-2px); border-color: var(--red) !important; color: var(--red) !important; background: transparent !important; }
+#stack .stack-map > .stack-node { animation: skillsConnectorPulse 4s ease-in-out infinite; }
+#stack .stack-map > .stack-node:nth-of-type(2) { animation-delay: 1.3s; } #stack .stack-map > .stack-node:nth-of-type(3) { animation-delay: 2.6s; }
+@keyframes skillsScanOnce { from { left: -35%; } to { left: 100%; } } @keyframes skillsConnectorPulse { 0%, 72%, 100% { opacity: .78; transform: scale(1); } 82% { opacity: 1; transform: scale(1.08); } }
+@media (prefers-reduced-motion: reduce) { #stack .stack-group, #stack .skill-tags > span { transition: none; } #stack .stack-group:hover::after, #stack .stack-map > .stack-node { animation: none; } }
 /* Final skill-tag isolation override */
  #stack .skill-tags { display: flex !important; flex-direction: row !important; flex-wrap: wrap !important; align-items: flex-start !important; justify-content: flex-start !important; column-gap: 10px !important; row-gap: 8px !important; border: none !important; background: transparent !important; border-collapse: initial !important; }
  #stack .skill-tags > span { display: inline-flex !important; width: fit-content !important; min-width: fit-content !important; flex: 0 0 auto !important; margin: 0 !important; padding: 7px 11px !important; border: 1px solid #d5d2cc !important; border-radius: 0 !important; box-sizing: border-box !important; background: transparent !important; }
