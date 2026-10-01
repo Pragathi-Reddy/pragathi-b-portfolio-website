@@ -385,12 +385,14 @@ main { display: flex; flex-direction: column; } main > header { order: 0; } main
 /* Experience supporting-line interaction */
 #experience .section-support > .section-label { color: var(--red); }
 #experience .experience-lines { display: flex; flex-direction: column; align-items: flex-start; gap: 0; }
-#experience .experience-lines span { position: relative; color: var(--muted); transition: color .24s ease, transform .24s ease, opacity .24s ease; animation: experienceLineReveal .42s ease-out both; }
-#experience .experience-lines span:nth-child(1) { animation-delay: 60ms; } #experience .experience-lines span:nth-child(2) { animation-delay: 120ms; } #experience .experience-lines span:nth-child(3) { animation-delay: 180ms; } #experience .experience-lines span:nth-child(4) { animation-delay: 240ms; }
+#experience .experience-lines span { position: relative; color: var(--muted); transition: color .22s ease, opacity .22s ease; animation: experienceLineReveal .36s ease-out both; }
+#experience .experience-lines span:nth-child(1) { animation-delay: 0ms; } #experience .experience-lines span:nth-child(2) { animation-delay: 150ms; } #experience .experience-lines span:nth-child(3) { animation-delay: 300ms; } #experience .experience-lines span:nth-child(4) { animation-delay: 450ms; }
+#experience .experience-lines span::before { content: ''; position: absolute; left: -14px; top: 50%; width: 4px; height: 4px; border-radius: 50%; background: var(--red); opacity: 0; transform: translate(-5px, -50%); transition: opacity .2s ease, transform .2s ease; }
 #experience .experience-lines span:hover, #experience .experience-lines span.is-scroll-highlight { color: var(--red); }
+#experience .experience-lines span:hover::before, #experience .experience-lines span.is-scroll-highlight::before { opacity: 1; transform: translate(0, -50%); }
 #experience .experience-lines .is-final::after { content: ''; display: block; width: 28px; height: 1px; margin-top: 5px; background: var(--red); }
-@keyframes experienceLineReveal { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
-@media (prefers-reduced-motion: reduce) { #experience .experience-lines span { animation: none; transition: none; } }
+@keyframes experienceLineReveal { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+@media (prefers-reduced-motion: reduce) { #experience .experience-lines span { animation: none; transition: none; } #experience .experience-lines span::before { transition: none; transform: translate(0, -50%); } }
 /* Annotated section alignment */
 #what-i-work-with .section-head .section-support > .section-label { color: var(--red); }
 #experience .experience-heading .section-support { grid-column: 1; grid-row: 1; justify-self: start; align-self: start; text-align: left; }
