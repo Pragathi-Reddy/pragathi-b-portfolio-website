@@ -1,6 +1,7 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
 import './globals.css'
+import { GlobalBackground } from '@/components/global-background'
 
 export const metadata: Metadata = {
   title: 'Pragathi B — ECE Graduate | VLSI & Software Development',
@@ -41,6 +42,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="antialiased">
+        <GlobalBackground />
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
