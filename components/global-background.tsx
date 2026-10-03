@@ -27,6 +27,9 @@ export function GlobalBackground() {
       <span className="background-orbit background-orbit-two" />
       <span className="background-route background-route-one" />
       <span className="background-route background-route-two" />
+      <span className="background-data-point background-data-point-one" />
+      <span className="background-data-point background-data-point-two" />
+      <span className="background-data-point background-data-point-three" />
       <span className="background-node background-node-one" />
       <span className="background-node background-node-two" />
       <span className="background-node background-node-three" />

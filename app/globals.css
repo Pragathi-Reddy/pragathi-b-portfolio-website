@@ -533,6 +533,19 @@ main { display: flex; flex-direction: column; } main > header { order: 0; } main
 #research .research-grid > .research-visual img { display: block; width: 100%; height: auto; border: 0; border-radius: 0; box-shadow: none; object-fit: contain; }
 @media (max-width: 760px) { #research .research-grid > .research-visual { margin-top: 0; max-width: 100%; transform: none; } }
 @media (prefers-reduced-motion: reduce) { .global-background, .global-background::before, .global-background::after, .background-orbit, .background-route, .background-node, .background-point, .background-scanline { animation: none; transition: none; } .global-background { transform: none; } }
+/* Final global background prominence */
+.global-background { background-image: linear-gradient(rgba(91, 86, 80, .1625) 1px, transparent 1px), linear-gradient(90deg, rgba(91, 86, 80, .1625) 1px, transparent 1px); }
+.global-background::before { background: repeating-linear-gradient(115deg, transparent 0 190px, rgba(91, 86, 80, .195) 191px, transparent 192px 380px); }
+.global-background::after { background: repeating-linear-gradient(72deg, transparent 0 280px, rgba(190, 36, 38, .48) 281px, transparent 282px 560px); }
+.background-orbit { border-color: rgba(91, 86, 80, .247); animation-duration: 25s; }
+.background-orbit-two { border-color: rgba(190, 36, 38, .45); animation-duration: 32s; }
+.background-route { background: linear-gradient(90deg, transparent, rgba(91, 86, 80, .36), transparent); }
+.background-node { box-shadow: 0 0 0 3px rgba(190, 36, 38, .1), 0 0 12px rgba(190, 36, 38, .22); animation-name: background-node-pulse; }
+.background-data-point { position: absolute; width: 5px; height: 5px; border-radius: 50%; background: var(--red); opacity: 0; box-shadow: 0 0 9px rgba(190, 36, 38, .55); animation: background-data-travel 11s linear infinite; }
+.background-data-point-one { left: 2%; top: 33%; transform: rotate(-27deg); }.background-data-point-two { left: 78%; top: 76%; animation-delay: -4s; transform: rotate(18deg); }.background-data-point-three { left: 35%; top: 48%; animation-delay: -7s; transform: rotate(-18deg); }
+@keyframes background-node-pulse { 0%,100% { transform: scale(1); opacity: .55; } 50% { transform: scale(1.18); opacity: .98; } }
+@keyframes background-data-travel { 0% { translate: -12vw 0; opacity: 0; } 12%, 78% { opacity: .85; } 92%, 100% { translate: 48vw 0; opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .background-data-point { animation: none; opacity: .35; } }
 /* Final skill-tag isolation override */
  #stack .skill-tags { display: flex !important; flex-direction: row !important; flex-wrap: wrap !important; align-items: flex-start !important; justify-content: flex-start !important; column-gap: 10px !important; row-gap: 8px !important; border: none !important; background: transparent !important; border-collapse: initial !important; }
  #stack .skill-tags > span { display: inline-flex !important; width: fit-content !important; min-width: fit-content !important; flex: 0 0 auto !important; margin: 0 !important; padding: 7px 11px !important; border: 1px solid #d5d2cc !important; border-radius: 0 !important; box-sizing: border-box !important; background: transparent !important; }
