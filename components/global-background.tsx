@@ -31,6 +31,10 @@ export function GlobalBackground() {
       <span className="background-trajectory background-trajectory-four" />
       <span className="background-route background-route-one" />
       <span className="background-route background-route-two" />
+      <span className="background-telemetry-line background-telemetry-line-one" />
+      <span className="background-telemetry-line background-telemetry-line-two" />
+      <span className="background-telemetry-line background-telemetry-line-three" />
+      <span className="background-telemetry-line background-telemetry-line-four" />
       <span className="background-data-point background-data-point-one" />
       <span className="background-data-point background-data-point-two" />
       <span className="background-data-point background-data-point-three" />
