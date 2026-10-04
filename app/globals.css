@@ -555,6 +555,17 @@ main { display: flex; flex-direction: column; } main > header { order: 0; } main
 .background-route { width: 14vw; transform: none; }.background-route-one { left: 8%; top: 34%; }.background-route-two { right: 10%; top: 76%; transform: none; }
 .background-route::after { content: ''; position: absolute; right: 18%; top: -2px; width: 4px; height: 4px; border-radius: 50%; background: var(--red); opacity: .7; animation: routePacket 8s linear infinite; } @keyframes routePacket { from { translate: -40px 0; opacity: 0; } 20%,80% { opacity: .75; } to { translate: 40px 0; opacity: 0; } }
 @keyframes trajectoryDrift { from { translate: -4px 1px; opacity: .42; } to { translate: 5px -2px; opacity: .8; } }
+/* Final telemetry fragment refinement */
+.background-orbit { width: 0; height: 0; border: 0; border-radius: 0; animation: none; }
+.background-orbit::before { content: ''; position: absolute; width: 96px; height: 32px; border-top: 1px solid rgba(91,86,80,.22); border-radius: 50% 50% 0 0; clip-path: inset(0 28% 48% 0); transform: rotate(-9deg); }
+.background-orbit-one { left: 12%; top: 22%; }.background-orbit-two { right: 16%; top: 64%; }.background-orbit-two::before { border-color: rgba(190,36,38,.27); transform: rotate(8deg); }
+.background-trajectory { width: 104px; height: 26px; border-top-color: rgba(91,86,80,.24); clip-path: inset(0 25% 45% 0); }
+.background-trajectory-one { left: 36%; top: 18%; }.background-trajectory-two { right: 23%; top: 31%; }.background-trajectory-three { left: 16%; top: 67%; }.background-trajectory-four { right: 35%; top: 81%; }
+.background-route { width: 112px; background: repeating-linear-gradient(90deg, rgba(91,86,80,.28) 0 18px, transparent 18px 25px); animation-duration: 14s; }.background-route-one { left: 11%; top: 34%; }.background-route-two { right: 12%; top: 76%; }
+.background-node { width: 5px; height: 5px; }
+@keyframes telemetryPulse { 0%,100% { opacity: .45; transform: scale(1); } 50% { opacity: 1; transform: scale(1.35); } }
+.background-trajectory::after, .background-route::after { animation: telemetryPulse 3.8s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) { .background-trajectory, .background-route::after { animation: none; } }
 /* Final skill-tag isolation override */
  #stack .skill-tags { display: flex !important; flex-direction: row !important; flex-wrap: wrap !important; align-items: flex-start !important; justify-content: flex-start !important; column-gap: 10px !important; row-gap: 8px !important; border: none !important; background: transparent !important; border-collapse: initial !important; }
  #stack .skill-tags > span { display: inline-flex !important; width: fit-content !important; min-width: fit-content !important; flex: 0 0 auto !important; margin: 0 !important; padding: 7px 11px !important; border: 1px solid #d5d2cc !important; border-radius: 0 !important; box-sizing: border-box !important; background: transparent !important; }
