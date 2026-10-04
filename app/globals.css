@@ -545,10 +545,16 @@ main { display: flex; flex-direction: column; } main > header { order: 0; } main
 @keyframes background-node-pulse { 0%,100% { transform: scale(1); opacity: .55; } 50% { transform: scale(1.18); opacity: .98; } }
 @keyframes background-data-travel { 0% { translate: -12vw 0; opacity: 0; } 12%, 78% { opacity: .85; } 92%, 100% { translate: 48vw 0; opacity: 0; } }
 @media (prefers-reduced-motion: reduce) { .background-data-point { animation: none; opacity: .35; } }
-/* Compact telemetry orbit refinement */
-.background-orbit { width: 30vw; height: 11vw; border-color: rgba(91, 86, 80, .16); transform: rotate(-4deg); }
-.background-orbit-one { left: 8%; top: 18%; }.background-orbit-two { right: 8%; top: 62%; width: 24vw; height: 9vw; border-color: rgba(190, 36, 38, .2); transform: rotate(3deg); }
+/* Compact telemetry trajectory fragments */
+.background-orbit { width: 0; height: 0; border: 0; border-radius: 0; animation: none; }
+.background-orbit::before { content: ''; position: absolute; width: 92px; height: 34px; border-top: 1px solid rgba(91, 86, 80, .2); border-radius: 50% 50% 0 0; transform: rotate(-8deg); clip-path: inset(0 24% 48% 0); }
+.background-orbit-one { left: 12%; top: 22%; }.background-orbit-two { right: 14%; top: 64%; }.background-orbit-two::before { border-color: rgba(190, 36, 38, .25); transform: rotate(7deg); }
+.background-trajectory { position: absolute; width: 118px; height: 28px; border-top: 1px solid rgba(91, 86, 80, .2); border-radius: 50% 50% 0 0; clip-path: inset(0 28% 45% 0); transform: rotate(-12deg); animation: trajectoryDrift 18s ease-in-out infinite alternate; }
+.background-trajectory::after { content: ''; position: absolute; right: 28%; top: -3px; width: 4px; height: 4px; border-radius: 50%; background: var(--red); opacity: .72; box-shadow: 0 0 8px rgba(190,36,38,.35); }
+.background-trajectory-one { left: 38%; top: 19%; }.background-trajectory-two { right: 24%; top: 31%; transform: rotate(9deg); animation-delay: -5s; }.background-trajectory-three { left: 17%; top: 67%; transform: rotate(8deg); animation-delay: -9s; }.background-trajectory-four { right: 38%; top: 81%; transform: rotate(-7deg); animation-delay: -13s; }
 .background-route { width: 14vw; transform: none; }.background-route-one { left: 8%; top: 34%; }.background-route-two { right: 10%; top: 76%; transform: none; }
+.background-route::after { content: ''; position: absolute; right: 18%; top: -2px; width: 4px; height: 4px; border-radius: 50%; background: var(--red); opacity: .7; animation: routePacket 8s linear infinite; } @keyframes routePacket { from { translate: -40px 0; opacity: 0; } 20%,80% { opacity: .75; } to { translate: 40px 0; opacity: 0; } }
+@keyframes trajectoryDrift { from { translate: -4px 1px; opacity: .42; } to { translate: 5px -2px; opacity: .8; } }
 /* Final skill-tag isolation override */
  #stack .skill-tags { display: flex !important; flex-direction: row !important; flex-wrap: wrap !important; align-items: flex-start !important; justify-content: flex-start !important; column-gap: 10px !important; row-gap: 8px !important; border: none !important; background: transparent !important; border-collapse: initial !important; }
  #stack .skill-tags > span { display: inline-flex !important; width: fit-content !important; min-width: fit-content !important; flex: 0 0 auto !important; margin: 0 !important; padding: 7px 11px !important; border: 1px solid #d5d2cc !important; border-radius: 0 !important; box-sizing: border-box !important; background: transparent !important; }

@@ -25,6 +25,10 @@ export function GlobalBackground() {
     >
       <span className="background-orbit background-orbit-one" />
       <span className="background-orbit background-orbit-two" />
+      <span className="background-trajectory background-trajectory-one" />
+      <span className="background-trajectory background-trajectory-two" />
+      <span className="background-trajectory background-trajectory-three" />
+      <span className="background-trajectory background-trajectory-four" />
       <span className="background-route background-route-one" />
       <span className="background-route background-route-two" />
       <span className="background-data-point background-data-point-one" />
