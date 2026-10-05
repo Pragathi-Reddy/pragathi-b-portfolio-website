@@ -170,6 +170,6 @@ export default function Page() {
     {schedulerOpen && <SchedulerGallery onClose={() => setSchedulerOpen(false)} />}
     {selectedProject && <ZenithCaseStudy projectNumber={selectedProject.number} onClose={() => setSelectedProject(null)} onPrevious={() => setSelectedProject(projects[Math.max(0, projects.findIndex((project) => project.number === selectedProject.number) - 1)])} onNext={() => setSelectedProject(projects[Math.min(projects.length - 1, projects.findIndex((project) => project.number === selectedProject.number) + 1)])} />}
   </main>
-  <footer className="site-footer wrapper"><span>Pragathi B.</span><span>ECE · VLSI · SOFTWARE</span><span>© 2026</span></footer><p className="footer-note">BUILT WITH CURIOSITY.</p>
+  <p className="footer-note">BUILT WITH CURIOSITY.</p><footer className="site-footer wrapper"><span>Pragathi B.</span><span>ECE · VLSI · SOFTWARE</span><span>© 2026</span></footer>
   </>
 }
